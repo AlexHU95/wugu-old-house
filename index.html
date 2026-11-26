@@ -1,0 +1,2294 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data: blob:; media-src data: blob:; font-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; form-action 'none'">
+<title>雾谷旧宅</title>
+<style>html,body{margin:0;width:100%;height:100%;height:100dvh;overflow:hidden;background:#000;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;overscroll-behavior:none}canvas{display:block;width:100vw;height:100vh;height:100dvh;touch-action:none;outline:none;-webkit-tap-highlight-color:transparent}</style></head><body><canvas id="game" tabindex="0"></canvas>
+<script>window.addEventListener("keydown",function(e){if(e.key==="Escape")try{parent.postMessage({type:"dsh-wall-escape"},"*")}catch(_){}});window.GAME={"title":"雾谷旧宅","rules":{"autoplayStepMs":220,"startingSan":58,"characters":2,"debugRoll":false,"notesAutoOpen":true,"note":"rules 是自由字段，game.js 里按 window.GAME.rules.<key> 读；本作是纯选项调查游戏，不走方向键，由 __autoplay 驱动试玩"},"slots":{"cover":{"tile":false,"custom":true}},"assets":{"cover":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjgiIGhlaWdodD0iMTAyNCIgdmlld0JveD0iMCAwIDc2OCAxMDI0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Iumbvuiwt+aXp+WuhSDCtyDlsIHpnaLvvJrpm6jlpJzkuK3nmoTlroXpgrjkuI7ljYrlvIDnmoTpk4Hpl6giPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJza3kiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMGIwYTA4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC4zOCIgc3RvcC1jb2xvcj0iIzE5MTUxMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNjIiIHN0b3AtY29sb3I9IiMxMjBmMGIiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDcwNjA1Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJoYWxvIiBjeD0iNTAlIiBjeT0iMzAlIiByPSI0NiUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM3ZDdhNGUiIHN0b3Atb3BhY2l0eT0iMC4zMiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNTUiIHN0b3AtY29sb3I9IiMzYjNhMjYiIHN0b3Atb3BhY2l0eT0iMC4xMiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0ibGl0d2luIiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNkOGZmYTgiIHN0b3Atb3BhY2l0eT0iMC45NSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNDUiIHN0b3AtY29sb3I9IiM4ZmQwNmEiIHN0b3Atb3BhY2l0eT0iMC41Ii8+CiAgICAgIDwhLS0g5YiwIDAuOCDlsLHmt6HliLDlhajpgI/mmI7vvJrov5nmoLflhYnmmZXlnKjnorDliLAgaG91c2VDbGlwIOi+ueeVjOS5i+WJjeW3sue7j+a2iOWkse+8jAogICAgICAgICAgIOS4jeS8muWcqOWxi+mhtuaWnOi+ueS4iueVmeS4i+S4gOmBk+iiq+ijgeWHuuadpeeahOehrOi+uSAtLT4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjgiIHN0b3AtY29sb3I9IiM0YTdhM2EiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM0YTdhM2EiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZm9nIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2E3YWM5MyIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC41IiBzdG9wLWNvbG9yPSIjYTdhYzkzIiBzdG9wLW9wYWNpdHk9IjAuMTAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYTdhYzkzIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9InZpZyIgY3g9IjUwJSIgY3k9IjQ2JSIgcj0iNzQlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuODUiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8cGF0dGVybiBpZD0iYmFycyIgd2lkdGg9IjM2IiBoZWlnaHQ9IjE1MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxyZWN0IHg9IjEzIiB5PSIwIiB3aWR0aD0iNyIgaGVpZ2h0PSIxNTAiIGZpbGw9IiMxMjEwMGQiLz4KICAgICAgPHJlY3QgeD0iMTIiIHk9IjU4IiB3aWR0aD0iOSIgaGVpZ2h0PSI2IiBmaWxsPSIjMTcxNDEwIi8+CiAgICA8L3BhdHRlcm4+CiAgICA8cGF0dGVybiBpZD0icmFpbiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjE5MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDEzKSI+CiAgICAgIDxyZWN0IHg9IjEyIiB5PSIwIiB3aWR0aD0iMS40IiBoZWlnaHQ9IjUyIiBmaWxsPSIjYzljM2FkIiBvcGFjaXR5PSIwLjEwIi8+CiAgICAgIDxyZWN0IHg9IjM0IiB5PSI2NiIgd2lkdGg9IjEuMiIgaGVpZ2h0PSIzOCIgZmlsbD0iI2M5YzNhZCIgb3BhY2l0eT0iMC4wNyIvPgogICAgICA8cmVjdCB4PSIyIiB5PSIxMjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjMwIiBmaWxsPSIjYzljM2FkIiBvcGFjaXR5PSIwLjA1Ii8+CiAgICA8L3BhdHRlcm4+CiAgICA8IS0tIOeql+WPo+mAj+WHuueahOWFieWPquWFgeiuuOiQveWcqOaIv+WtkOS4iu+8muWFieaZleS4gOW+i+ijgei/m+i/meS7veWJquW9sSAtLT4KICAgIDxjbGlwUGF0aCBpZD0iaG91c2VDbGlwIj4KICAgICAgPHJlY3QgeD0iMTY4IiB5PSI0ODYiIHdpZHRoPSI0MzIiIGhlaWdodD0iMzAyIi8+CiAgICAgIDxwb2x5Z29uIHBvaW50cz0iMTUwLDQ5MiAzODQsMzkyIDYxOCw0OTIiLz4KICAgICAgPHJlY3QgeD0iMzE4IiB5PSIzNTIiIHdpZHRoPSIxMzIiIGhlaWdodD0iMTQyIi8+CiAgICAgIDxwb2x5Z29uIHBvaW50cz0iMzA2LDM1NiAzODQsMjg2IDQ2MiwzNTYiLz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIxMTIsNTYwIDE0OSw1MjIgMTg2LDU2MCIvPgogICAgICA8cmVjdCB4PSIxMTgiIHk9IjU1OCIgd2lkdGg9IjYyIiBoZWlnaHQ9IjIzMCIvPgogICAgICA8cG9seWdvbiBwb2ludHM9IjU4Miw1NjAgNjE5LDUyMiA2NTYsNTYwIi8+CiAgICAgIDxyZWN0IHg9IjU4OCIgeT0iNTU4IiB3aWR0aD0iNjIiIGhlaWdodD0iMjMwIi8+CiAgICA8L2NsaXBQYXRoPgogIDwvZGVmcz4KCiAgPHJlY3Qgd2lkdGg9Ijc2OCIgaGVpZ2h0PSIxMDI0IiBmaWxsPSJ1cmwoI3NreSkiLz4KICA8cmVjdCB3aWR0aD0iNzY4IiBoZWlnaHQ9IjEwMjQiIGZpbGw9InVybCgjaGFsbykiLz4KCiAgPCEtLSDov5zmma/mnpfnur/vvIjpm77osLfvvIkgLS0+CiAgPHBhdGggZD0iTTAsNzI0IEw1OCw2OTIgTDEyMiw3MTQgTDE4OCw2NzQgTDI1Miw3MDggTDMyMCw2NzAgTDM4OCw3MDIgTDQ2OCw2NjIgTDU0MCw2OTggTDYxMiw2NjYgTDY5MCw3MDIgTDc2OCw2NzggTDc2OCw4MDAgTDAsODAwIFoiCiAgICAgICAgZmlsbD0iIzBlMGMwOSIvPgoKICA8IS0tIOWuhemCuOS4u+S9k+WJquW9se+8iOS4jiBob3VzZUNsaXAg5a6M5YWo5LiA6Ie077yM5pS56L+Z6YeM6KaB5ZCM5q2l5pS5IGNsaXDvvIkgLS0+CiAgPGcgZmlsbD0iIzBjMGEwOCI+CiAgICA8cmVjdCB4PSIxNjgiIHk9IjQ4NiIgd2lkdGg9IjQzMiIgaGVpZ2h0PSIzMDIiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iMTUwLDQ5MiAzODQsMzkyIDYxOCw0OTIiLz4KICAgIDxyZWN0IHg9IjMxOCIgeT0iMzUyIiB3aWR0aD0iMTMyIiBoZWlnaHQ9IjE0MiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIzMDYsMzU2IDM4NCwyODYgNDYyLDM1NiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIxMTIsNTYwIDE0OSw1MjIgMTg2LDU2MCIvPgogICAgPHJlY3QgeD0iMTE4IiB5PSI1NTgiIHdpZHRoPSI2MiIgaGVpZ2h0PSIyMzAiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iNTgyLDU2MCA2MTksNTIyIDY1Niw1NjAiLz4KICAgIDxyZWN0IHg9IjU4OCIgeT0iNTU4IiB3aWR0aD0iNjIiIGhlaWdodD0iMjMwIi8+CiAgPC9nPgogIDxnIGZpbGw9IiMwYTA4MDYiPgogICAgPHJlY3QgeD0iMjEyIiB5PSI0MjQiIHdpZHRoPSIzNCIgaGVpZ2h0PSI3MiIvPgogICAgPHJlY3QgeD0iNTIwIiB5PSI0NDYiIHdpZHRoPSIzMCIgaGVpZ2h0PSI1NCIvPgogIDwvZz4KCiAgPCEtLSDkuLvmpbzlm5vmiYfnqpfvvJrlkIzkuIDnqpflnovvvIjmoYYgKyDnqpfmo4LvvIkgLS0+CiAgPGcgZmlsbD0iIzFhMTYxMCI+CiAgICA8cmVjdCB4PSIyMzYiIHk9IjU3NCIgd2lkdGg9IjUyIiBoZWlnaHQ9Ijc4IiByeD0iMyIvPgogICAgPHJlY3QgeD0iMzM2IiB5PSI1NzQiIHdpZHRoPSI1MiIgaGVpZ2h0PSI3OCIgcng9IjMiLz4KICAgIDxyZWN0IHg9IjQzMiIgeT0iNTc0IiB3aWR0aD0iNTIiIGhlaWdodD0iNzgiIHJ4PSIzIi8+CiAgICA8cmVjdCB4PSI1MjQiIHk9IjU3NCIgd2lkdGg9IjUyIiBoZWlnaHQ9Ijc4IiByeD0iMyIvPgogIDwvZz4KICA8ZyBmaWxsPSIjMGEwODA2IiBvcGFjaXR5PSIwLjg1Ij4KICAgIDxyZWN0IHg9IjI2MSIgeT0iNTc0IiB3aWR0aD0iMiIgaGVpZ2h0PSI3OCIvPjxyZWN0IHg9IjIzNiIgeT0iNjEyIiB3aWR0aD0iNTIiIGhlaWdodD0iMiIvPgogICAgPHJlY3QgeD0iMzYxIiB5PSI1NzQiIHdpZHRoPSIyIiBoZWlnaHQ9Ijc4Ii8+PHJlY3QgeD0iMzM2IiB5PSI2MTIiIHdpZHRoPSI1MiIgaGVpZ2h0PSIyIi8+CiAgICA8cmVjdCB4PSI0NTciIHk9IjU3NCIgd2lkdGg9IjIiIGhlaWdodD0iNzgiLz48cmVjdCB4PSI0MzIiIHk9IjYxMiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjIiLz4KICAgIDxyZWN0IHg9IjU0OSIgeT0iNTc0IiB3aWR0aD0iMiIgaGVpZ2h0PSI3OCIvPjxyZWN0IHg9IjUyNCIgeT0iNjEyIiB3aWR0aD0iNTIiIGhlaWdodD0iMiIvPgogIDwvZz4KCiAgPCEtLSDloZTmpbzvvJrkuKTmiYfnqpflr7nnp7DjgIHlkIzln7rnur/vvIjloZTmpbwgMzE4Li40NTDvvIznqpcgMzMyLi4zNzggLyAzOTAuLjQzNu+8iSAtLT4KICA8ZyBmaWxsPSIjMWExNjEwIj4KICAgIDxyZWN0IHg9IjMzMiIgeT0iMzk4IiB3aWR0aD0iNDYiIGhlaWdodD0iNjIiIHJ4PSIzIi8+CiAgICA8cmVjdCB4PSIzOTAiIHk9IjM5OCIgd2lkdGg9IjQ2IiBoZWlnaHQ9IjYyIiByeD0iMyIvPgogIDwvZz4KICA8ZyBmaWxsPSIjMGEwODA2IiBvcGFjaXR5PSIwLjg1Ij4KICAgIDxyZWN0IHg9IjM1NCIgeT0iMzk4IiB3aWR0aD0iMiIgaGVpZ2h0PSI2MiIvPjxyZWN0IHg9IjMzMiIgeT0iNDI4IiB3aWR0aD0iNDYiIGhlaWdodD0iMiIvPgogIDwvZz4KCiAgPCEtLSDlj7PnqpfpgI/lh7rlub3nu7/vvJrlhYnmmZXoo4HlnKjmiL/lrZDliarlvbHlhoXvvJvljYrlvoTmjInjgIwwLjgg5aSE5bey5reh5YiwIDDjgI3lj5bnmoTvvIwKICAgICAgIOacieaViOiMg+WbtCAzNDkuLjQ2Me+8jOiQveWcqOWhlOalvCgzMTguLjQ1MCnkuI7lsYvpobbkuYvlhoXvvIzogonnnLznnIvkuI3liLDoo4HliIfovrkgLS0+CiAgPGcgY2xpcC1wYXRoPSJ1cmwoI2hvdXNlQ2xpcCkiPgogICAgPGVsbGlwc2UgY3g9IjQwNSIgY3k9IjQyOSIgcng9IjcwIiByeT0iNjIiIGZpbGw9InVybCgjbGl0d2luKSIvPgogICAgPHJlY3QgeD0iMzkwIiB5PSIzOTgiIHdpZHRoPSI0NiIgaGVpZ2h0PSI2MiIgcng9IjMiIGZpbGw9IiM5YWQ0NmUiIG9wYWNpdHk9IjAuNDUiLz4KICA8L2c+CiAgPCEtLSDkuq7nqpfnmoTnqpfmo4LljovlnKjlhYnkuIrvvIzlhY3lvpfns4rmiJDkuIDlm6IgLS0+CiAgPGcgZmlsbD0iIzBhMDgwNiIgb3BhY2l0eT0iMC45Ij4KICAgIDxyZWN0IHg9IjQxMiIgeT0iMzk4IiB3aWR0aD0iMiIgaGVpZ2h0PSI2MiIvPjxyZWN0IHg9IjM5MCIgeT0iNDI4IiB3aWR0aD0iNDYiIGhlaWdodD0iMiIvPgogIDwvZz4KCiAgPCEtLSDluLjmmKXol6QgLS0+CiAgPGcgc3Ryb2tlPSIjMTUxYTEyIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC45MiI+CiAgICA8cGF0aCBkPSJNMTg2LDc4OCBDMTk4LDcwNCAxNzQsNjQ0IDIwMCw1ODggQzIxNiw1NTIgMjA2LDUyMCAxOTQsNTAwIi8+CiAgICA8cGF0aCBkPSJNMjA4LDc4OCBDMjE4LDcxNiAyMDIsNjYyIDIyNiw2MTQiLz4KICAgIDxwYXRoIGQ9Ik01NzgsNzg4IEM1NjgsNzA4IDU5Miw2NTAgNTY2LDU5OCBDNTU0LDU2OCA1NjQsNTM4IDU3Niw1MTYiLz4KICA8L2c+CgogIDwhLS0g6Zu+5bimIC0tPgogIDxlbGxpcHNlIGN4PSIzODQiIGN5PSI3NDQiIHJ4PSI1NjAiIHJ5PSI5NiIgZmlsbD0idXJsKCNmb2cpIi8+CiAgPGVsbGlwc2UgY3g9IjM1MiIgY3k9Ijg0MCIgcng9IjYyMCIgcnk9IjExMiIgZmlsbD0idXJsKCNmb2cpIi8+CgogIDwhLS0g5Zyw6Z2iIC0tPgogIDxyZWN0IHk9Ijc4OCIgd2lkdGg9Ijc2OCIgaGVpZ2h0PSIyMzYiIGZpbGw9IiMwODA3MDYiLz4KCiAgPCEtLSDpk4Hpl6jkuI7lm7TmoI/vvJrkuK3pl7TnlZnlh7rkuIDpgZPlvIDnnYDnmoTnvJ0gLS0+CiAgPHJlY3QgeD0iMCIgeT0iODg0IiB3aWR0aD0iMjkyIiBoZWlnaHQ9IjE0NiIgZmlsbD0idXJsKCNiYXJzKSIvPgogIDxyZWN0IHg9IjQ1MiIgeT0iODg0IiB3aWR0aD0iMzE2IiBoZWlnaHQ9IjE0NiIgZmlsbD0idXJsKCNiYXJzKSIvPgogIDxnIGZpbGw9IiMxNDExMGUiPgogICAgPHJlY3QgeD0iMCIgeT0iODcyIiB3aWR0aD0iMjkyIiBoZWlnaHQ9IjEyIi8+CiAgICA8cmVjdCB4PSI0NTIiIHk9Ijg3MiIgd2lkdGg9IjMxNiIgaGVpZ2h0PSIxMiIvPgogICAgPHJlY3QgeD0iMjg2IiB5PSI4NTYiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxODAiLz4KICAgIDxyZWN0IHg9IjQ0NCIgeT0iODU2IiB3aWR0aD0iMTQiIGhlaWdodD0iMTgwIi8+CiAgPC9nPgogIDwhLS0g6ZSI6JqA55qE5paw6ZSBIC0tPgogIDxnIGZpbGw9IiMzYTMyMjYiPgogICAgPHJlY3QgeD0iMzU2IiB5PSI5MjIiIHdpZHRoPSIzMCIgaGVpZ2h0PSIyNiIgcng9IjMiLz4KICAgIDxwYXRoIGQ9Ik0zNjIsOTIyIHYtMTAgYTksOSAwIDAgMSAxOCwwIHYxMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjM2EzMjI2IiBzdHJva2Utd2lkdGg9IjUiLz4KICA8L2c+CgogIDwhLS0g6ZuoIC0tPgogIDxyZWN0IHdpZHRoPSI3NjgiIGhlaWdodD0iMTAyNCIgZmlsbD0idXJsKCNyYWluKSIvPgoKICA8IS0tIOaal+inkiAtLT4KICA8cmVjdCB3aWR0aD0iNzY4IiBoZWlnaHQ9IjEwMjQiIGZpbGw9InVybCgjdmlnKSIvPgo8L3N2Zz4K"}};</script>
+<script>/* =============================================================================
+ * 雾谷旧宅 · THE OLD HOUSE IN THE FOG VALLEY
+ * -----------------------------------------------------------------------------
+ * 克苏鲁的呼唤（CoC）悬疑调查单次短模组 —— DSH Game Studio 版本
+ *
+ * 来源：coc-demo/雾谷旧宅.html v1.0（封存 2026-11-25，构建号 1125121757；
+ *      本移植基于 2026-11-26 回灌三处修复后重建的版本，构建号见页脚）
+ *      移植方式见 tools/port-from-demo.mjs；引擎 / 内容 / 状态机 / UI 逐字保留，
+ *      只加了①挂载层与⑤桥接层。
+ *
+ * 相对封存版的三处修复（已回灌 v1 源码，由 test.js L 组 / verify.js 守住）：
+ *   ① special="letHim" 真正生效：清醒的查尔斯亲手取下护符并交给玩家
+ *   ② traverse 补上五档旁白，7 个意图 × 5 档通用句齐全
+ *   ③ 规则 10 只收真道具 id（此前会把对象 id 塞进背包，客厅翻壁炉必崩）+ 界面兜底
+ *
+ * 本文件是唯一真源，结构：
+ *   ① 挂载    ② 早期错误显示   ③ ES5 引导层   ④ 判定引擎+内容+UI   ⑤ studio 桥接
+ *
+ * 游戏形态是 DOM 排版（不是 canvas），所以不走方向键，而由 __autoplay 驱动。
+ * ========================================================================== */
+
+
+/* ============================ ① 挂载：把原页面装回宿主 ============================ */
+(function mountOldHouse() {
+  var CSS = "\n  :root {\n    --bg:#12100c; --bg2:#1b1712; --panel:#201a14; --panel2:#28211a; --line:#3a2f22;\n    --gold:#c9a86a; --gold-dim:#8a7044; --text:#e6dcc6; --text-dim:#a99c83;\n    --red-bright:#c0483e; --green:#4f8a4f;\n  }\n  * { box-sizing: border-box; }\n  /* ============================================================\n   * 竖屏 App 形态（v1.0.2 起的唯一形态）\n   * 整个游戏是一列手机比例的画面：宽屏时居中成一格「手机框」，两侧留黑。\n   * 一屏不滚页 —— 纵向滚动只发生在剧情区与行动区内部。\n   * ============================================================ */\n  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; height: 100%; background: #0b0906; }\n  body { margin: 0 auto;\n    display: flex; flex-direction: column;\n    width: 100%; max-width: 480px;        /* 手机竖屏画布：宽屏时居中 */\n    height: 100vh; height: 100dvh;        /* ⚠ 必须是确定高度，flex 子项才解析得了 1fr */\n    overflow: hidden;                     /* 页面不整体滚动，滚动交给内部区域 */\n    overscroll-behavior: none;\n    /* 刘海 / Home 条：env() 不被支持时整条声明被丢弃，退化为 0，不影响布局 */\n    padding-top: env(safe-area-inset-top, 0px);\n    padding-bottom: env(safe-area-inset-bottom, 0px);\n    background: radial-gradient(ellipse at 50% -10%, #241d14 0%, var(--bg) 55%);\n    color: var(--text); font-family: \"Georgia\",\"Noto Serif SC\",\"Songti SC\",\"SimSun\",serif;\n    line-height: 1.7;\n    box-shadow: 0 0 0 1px #241d14, 0 0 70px rgba(0,0,0,.85); }\n  header { position: relative; flex: 0 0 auto; border-bottom: 1px solid var(--line); padding: 12px 16px 10px;\n    background: linear-gradient(180deg,rgba(201,168,106,.08),transparent); }\n  header h1 { margin: 0; font-size: 21px; letter-spacing: 5px; color: var(--gold); font-weight: 500; }\n  header .sub { margin-top: 3px; font-size: 11px; letter-spacing: 1px; color: var(--text-dim); }\n  header .badge { display: none; }\n\n  /* ---------- 右上角「线索 / 调查笔记」（v1.0.3） ---------- */\n  /* 触控目标一律 ≥44px（拇指标准）；下同 */\n  .clue-btn { position: absolute; top: 10px; right: 12px;\n    display: inline-flex; align-items: center; justify-content: center;\n    min-height: 44px; padding: 0 16px;\n    background: #1c1610; color: var(--gold-dim); border: 1px solid var(--line);\n    border-radius: 999px; font-family: inherit; font-size: 13px;\n    letter-spacing: 1px; cursor: pointer; touch-action: manipulation;\n    -webkit-tap-highlight-color: transparent; }\n  .clue-btn b { color: var(--gold); font-weight: 500; font-variant-numeric: tabular-nums; }\n  .clue-btn.on { border-color: var(--gold); color: var(--gold); }\n  /* 新线索入账时闪一下：告诉玩家「有东西记进笔记了」 */\n  .clue-btn.pulse { animation: cluePulse 1.2s ease; }\n  @keyframes cluePulse {\n    0% { background: #4a3a1c; border-color: var(--gold); color: var(--gold); }\n    100% { background: #1c1610; }\n  }\n  /* 面板挂在标题栏下（top:100%），随画布宽度走，不越出手机框 */\n  .clue-panel { position: absolute; top: 100%; left: 8px; right: 8px; z-index: 60;\n    display: none; background: var(--bg2); border: 1px solid var(--gold-dim); border-radius: 8px;\n    box-shadow: 0 16px 44px rgba(0,0,0,.82); overflow: hidden; }\n  .clue-panel-head { display: flex; justify-content: space-between; align-items: center;\n    min-height: 44px; padding: 0 4px 0 12px; border-bottom: 1px solid var(--line);\n    font-size: 11px; letter-spacing: 2px; color: var(--gold); }\n  /* 只留一个 ✕，但触控区仍是 44×44 */\n  .clue-close { display: inline-flex; align-items: center; justify-content: center;\n    width: 44px; height: 44px; padding: 0; background: none; border: none;\n    color: var(--text-dim); font-family: inherit; font-size: 17px; line-height: 1;\n    cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }\n  .clue-close:active { color: var(--gold); }\n  .clue-panel-body { padding: 10px 12px; overflow-y: auto;\n    max-height: 58vh; max-height: 58dvh; -webkit-overflow-scrolling: touch; }\n  .clue-sec { font-size: 11px; letter-spacing: 2px; color: var(--gold-dim); margin: 12px 0 7px; }\n  .clue-sec:first-child { margin-top: 0; }\n  .clue-item { background: #1c1610; border: 1px solid #4a3a1c; border-radius: 6px;\n    padding: 8px 11px; margin-bottom: 7px; }\n  .clue-item .clue-k { font-size: 11px; letter-spacing: 1px; color: var(--gold-dim); margin-bottom: 3px; }\n  .clue-item .clue-t { font-size: 13px; color: #e6c07a; line-height: 1.65; }\n\n  .wrap { flex: 1 1 auto;\n    /* ⚠ flex 子项的 min-height 默认是 auto，不设为 0 就无法收缩，\n       内容会把行动区顶出屏幕（与 grid 的 minmax(0,1fr) 是同一类陷阱） */\n    min-height: 0;\n    display: grid;\n    /* ⚠ 列同理：1fr 的 min-width 默认 auto，会被长文本撑破 */\n    grid-template-columns: minmax(0, 1fr);\n    /* 行动区放最下 = 拇指区；角色卡折叠成一条夹在中间 */\n    grid-template-areas: \"log\" \"char\" \"action\";\n    grid-template-rows: minmax(0, 1fr) auto auto;\n    gap: 8px; padding: 8px 10px 10px; width: 100%; max-width: none; margin: 0; }\n  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,.4); }\n  /* ⚠ flex 子项默认可收缩，而标题栏带 overflow:hidden，\n     会被撑起来的剧情内容挤扁（表现为「剧情记录」被裁掉一半）—— 钉住它。 */\n  .panel-head { flex: 0 0 auto; padding: 9px 12px; border-bottom: 1px solid var(--line); font-size: 11px;\n    letter-spacing: 2px; color: var(--gold); overflow: hidden; }\n  .panel-body { padding: 10px 12px; }\n  .panel-log, .panel-action, .panel-char { min-width: 0; }\n  .panel-log { grid-area: log; display: flex; flex-direction: column; min-height: 0; }\n  .panel-char { grid-area: char; }\n  .panel-action { grid-area: action; }\n  .panel-log .panel-body { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; padding: 8px 10px; overflow: hidden; }\n  .panel-action .panel-body { max-height: 34vh; max-height: 34dvh; overflow-y: auto; overflow-x: hidden; }\n\n  /* 可展开说明：技能行 / 异象强度行「点一下就地展开」。\n     原先用 hover / :active 浮动提示 —— iOS 上 :active 不保证触发，\n     浮层又会被抽屉的 overflow 裁掉，触摸端等于没有说明。\n     改成点击展开、正文插在该行下方：任何一端都能用，也不会溢出屏幕。 */\n  [data-tip-body] { cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }\n  .skill-row .sk { border-bottom: 1px dotted var(--gold-dim); }\n  .tip-body { margin: 4px 0 8px; padding: 7px 10px; border-left: 2px solid var(--gold-dim);\n    background: #1c1610; color: var(--gold-dim); font-size: 12px; line-height: 1.65;\n    border-radius: 0 5px 5px 0; }\n\n  .char-name { font-size:19px; color:var(--gold); }\n  .char-job { font-size:12px; color:var(--text-dim); letter-spacing:2px; margin-bottom:12px; }\n  .attr-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px 12px; font-size:13px; }\n  .attr-row { display:flex; justify-content:space-between; }\n  .attr-row .k { color:var(--text); }\n  .attr-row .v { color:var(--gold-dim); font-variant-numeric:tabular-nums; }\n  .stat-bars { margin:16px 0 6px; }\n  .bar-row { margin-bottom:10px; }\n  .bar-label { display:flex; justify-content:space-between; font-size:12px; color:var(--text-dim); margin-bottom:3px; }\n  .bar-label b { color:var(--text); font-weight:500; font-variant-numeric:tabular-nums; }\n  .bar { height:9px; background:#2a221a; border:1px solid var(--line); border-radius:5px; overflow:hidden; }\n  .bar-fill { height:100%; border-radius:5px; transition:width .5s ease, background .5s ease; }\n  .skills { margin-top:14px; }\n  .skill-row { display:flex; justify-content:space-between; font-size:13px; padding:3px 0; border-bottom:1px dotted #2c241a; }\n  .skill-row .sk { color:var(--text); }\n  .skill-row .sv { color:var(--gold-dim); font-variant-numeric:tabular-nums; }\n\n  /* 剧情区：用 flex 分配高度而不是 height:100% —— 百分比高度要在每一层父元素都能解析，\n     任何一层塌成自动高度，剧情区就会变成一条空白（宽视口下偶发过一帧）。\n     flex:1 1 auto + min-height:0 由父级直接分配，不依赖百分比解析。 */\n  #log { flex: 1 1 auto; min-height: 0; max-height: none; overflow-y: auto; overflow-x: hidden; padding-right: 4px; }\n  .entry { margin-bottom:14px; animation:fade .5s ease; }\n  @keyframes fade { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }\n  .entry .tag { display:inline-block; font-size:11px; letter-spacing:1px; padding:0 8px; border-radius:3px; margin-right:6px; vertical-align:1px; }\n  .tag.kp { background:#2a221a; color:var(--gold); border:1px solid var(--line); }\n  .tag.player { background:#1d2733; color:#8fb0d4; border:1px solid #2c3a4a; }\n  .tag.clue { background:#332913; color:#e6c07a; border:1px solid #4a3a1c; }\n  .tag.roll { background:#251d24; color:#c49ab0; border:1px solid #3a2830; }\n  .tag.sys { background:#1c241c; color:#86b08a; border:1px solid #2c3a2c; }\n  .tag.om { background:#171a20; color:#93a6c2; border:1px solid #26303d; }\n  .entry p { margin:4px 0 0; font-size:15px; white-space:pre-line; }\n  .roll-line { font-size:14px; color:#c49ab0; }\n  .roll-line .big { font-size:22px; color:var(--text); font-variant-numeric:tabular-nums; margin:0 4px; }\n  .verdict { font-weight:600; letter-spacing:1px; }\n  .verdict.crit { color:#6ecf6e; } .verdict.hard { color:#8fd08f; }\n  .verdict.success { color:#c9c27a; } .verdict.fail { color:#d06b6b; } .verdict.fumble { color:#e04a4a; }\n\n  .pick-title { font-size:13px; letter-spacing:1px; color:var(--gold); margin:2px 0 10px; }\n  .choice { display:block; width:100%; text-align:left; background:var(--panel2); color:var(--text);\n    border:1px solid var(--line); border-left:3px solid var(--gold-dim); padding:10px 12px; margin-bottom:8px;\n    border-radius:5px; font-family:inherit; font-size:14px; cursor:pointer; line-height:1.5; transition:background .15s,border-color .15s; }\n  .choice:hover:not(:disabled) { background:#2f271d; border-left-color:var(--gold); }\n  .choice:disabled { opacity:.5; cursor:not-allowed; border-left-color:var(--line); color:var(--text-dim); }\n  .choice.move { border-left-color:#2c3a4a; color:var(--text-dim); background:#1a1a17; }\n  .choice.move:hover:not(:disabled) { background:#22221d; border-left-color:#5b7fa6; color:var(--text); }\n  .choice .lock-hint { display:block; font-size:11px; color:var(--gold-dim); margin-top:3px; }\n  .exit-row { display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; }\n  .exit-btn { flex:1 1 auto; min-width:110px; background:#1c1610; color:var(--text-dim); border:1px solid var(--line);\n    border-radius:5px; padding:7px 10px; font-family:inherit; font-size:13px; cursor:pointer; }\n  .exit-btn:hover { border-color:var(--gold-dim); color:var(--text); }\n  .divider { border-top:1px solid var(--line); margin:14px 0 12px; }\n  .hint { font-size:12px; color:#5c5242; font-style:italic; }\n  .clue-card { background:#1c1610; border:1px solid #4a3a1c; border-radius:6px; padding:7px 11px; margin-bottom:7px; font-size:13px; color:#e6c07a; }\n  .empty-hint { font-size:12px; color:#5c5242; font-style:italic; }\n\n  /* ⚠ 不要用 inset:0 —— Chrome 87+ 才支持；微信内置浏览器（X5）旧内核会忽略它，\n     导致弹窗塌缩到文档流位置、跑到屏幕外（表现为「点了按钮没反应」）。\n     必须写成 top/right/bottom/left 四件套。 */\n  .modal { position:fixed; top:0; right:0; bottom:0; left:0;\n    margin:0 auto; max-width:480px;   /* 弹窗不越出竖屏画布 */\n    padding: env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px);\n    background:rgba(0,0,0,.82); display:flex; align-items:center; justify-content:center; z-index:50;\n    -webkit-overflow-scrolling:touch; }\n  .modal-inner { background:var(--bg2); border:1px solid var(--line); border-radius:10px; padding:26px;\n    max-width:660px; width:92%; max-height:88vh; overflow-y:auto; box-shadow:0 20px 80px rgba(0,0,0,.6); }\n  .modal h2 { margin:0 0 6px; color:var(--gold); letter-spacing:4px; font-weight:500; }\n  .modal .lead { color:var(--text-dim); font-size:13px; margin:0 0 18px; }\n  .char-cards { display:grid; grid-template-columns:1fr 1fr; gap:12px; }\n  .char-card { border:1px solid var(--line); border-radius:8px; padding:14px; cursor:pointer; background:var(--panel); transition:border-color .15s,background .15s; }\n  .char-card:hover { border-color:var(--gold); background:var(--panel2); }\n  .char-card h3 { margin:0 0 2px; color:var(--gold); font-weight:500; }\n  .char-card .role { font-size:12px; color:var(--text-dim); letter-spacing:2px; }\n  .char-card ul { margin:10px 0 0; padding-left:0; list-style:none; font-size:13px; }\n  #title-screen { background:radial-gradient(ellipse at 50% 28%, #241d14 0%, #0c0a07 72%); }\n  .title-inner { text-align:center; max-width:600px; width:90%; }\n  .title-sub { font-size:13px; letter-spacing:6px; color:var(--gold-dim); margin-bottom:20px; }\n  .title-main { margin:0; font-size:64px; letter-spacing:22px; color:var(--gold); font-weight:500; text-indent:22px; text-shadow:0 0 44px rgba(201,168,106,.28); }\n  .title-en { margin-top:12px; font-size:11px; letter-spacing:4px; color:#5c5242; }\n  .title-ver { position:absolute; right:28px; bottom:22px; padding:2px 16px; border-radius:999px; font-size:12px;\n    letter-spacing:2px; color:var(--gold-dim); border:1px solid var(--line); cursor:pointer; }\n  .title-ver:hover { color:var(--gold); border-color:var(--gold-dim); }\n  .btn { display:block; width:100%; padding:10px; border-radius:5px; background:#2a221a; color:var(--gold);\n    border:1px solid var(--gold-dim); font-family:inherit; font-size:14px; letter-spacing:2px; cursor:pointer; margin-bottom:8px; transition:background .15s; }\n  .btn:hover:not(:disabled) { background:#382d1f; }\n  .btn.ghost { background:transparent; border-color:var(--line); color:var(--text-dim); }\n  .title-start { display:inline-block; width:auto; min-width:220px; margin:34px auto 0; letter-spacing:6px; padding:12px 34px; }\n  .boot-check { margin-top:18px; font-size:11px; letter-spacing:1px; line-height:1.7; color:#c0483e; max-width:320px; margin-left:auto; margin-right:auto; }\n  .clog h3 { margin:16px 0 6px; color:var(--gold); font-size:15px; letter-spacing:2px; font-weight:500; }\n  .clog h3:first-child { margin-top:0; }\n  .clog .vmeta { color:var(--text-dim); font-size:12px; margin-bottom:8px; }\n  .clog ul { margin:0 0 8px; padding-left:0; list-style:none; font-size:14px; }\n  .clog li { padding:3px 0 3px 18px; position:relative; }\n  .clog li::before { content:\"·\"; position:absolute; left:5px; color:var(--gold); }\n  .clog li.fix::before { content:\"◆\"; color:var(--text-dim); }\n  /* 操作说明 */\n  .howto { margin: 4px 0 6px; }\n  /* 不用 flex gap（Chrome 84+ 才支持），改用 padding 保证旧内核同样有间距 */\n  .howto-row { display:flex; padding:8px 0; border-bottom:1px dotted var(--line); font-size:14px; line-height:1.6; }\n  .howto-row:last-child { border-bottom:none; }\n  .howto-k { flex:0 0 78px; padding-right:12px; color:var(--gold); font-size:13px; letter-spacing:1px; padding-top:1px; }\n  .howto-v { color:var(--text-dim); }\n  .howto-v b { color:var(--text); font-weight:500; }\n  .howto-tip { margin-top:14px; padding:10px 12px; border:1px solid var(--line); border-left:3px solid var(--gold-dim);\n    border-radius:5px; background:#1c1610; font-size:13px; color:var(--gold-dim); }\n  footer { text-align:center; color:#5c5242; font-size:12px; padding:10px 20px 24px; letter-spacing:1px; }\n  .version-link { color:var(--gold); cursor:pointer; border-bottom:1px dotted var(--gold-dim); }\n  /* 常驻紧凑状态条：不必翻到角色卡也能看到关键数值 */\n  .mini-status { display: inline; float: right; font-size: 11px; letter-spacing: 0; color: var(--text-dim); }\n  .mini-status b { color: var(--text); font-weight: 500; }\n  .char-toggle { display: inline; float: right; font-size: 11px; letter-spacing: 0; color: var(--gold-dim); }\n\n  /* ---------- 角色卡：默认折叠成一条；展开时以【底部抽屉】浮层出现 ----------\n     浮层脱离文档流 —— 否则展开时会把剧情区压到只剩几十像素。 */\n  .panel-char .panel-body { display: none; }\n  .panel-char.open { position: fixed; left: 8px; right: 8px;\n    bottom: calc(8px + env(safe-area-inset-bottom, 0px));\n    margin: 0 auto; max-width: 464px; z-index: 40;\n    display: flex; flex-direction: column;\n    max-height: 68vh; max-height: 68dvh;\n    box-shadow: 0 -10px 44px rgba(0,0,0,.78); border-color: var(--gold-dim); }\n  .panel-char.open .panel-body { display: block; flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 12px; }\n  /* 角色卡标题栏同时是抽屉开关：整条都可点，高度补到 44px */\n  .panel-char #char-head { min-height: 44px; display: flex; align-items: center;\n    justify-content: space-between; cursor: pointer; }\n\n  /* ---------- 竖屏触控尺寸与字号 ---------- */\n  .choice { padding: 12px 14px; font-size: 15px; }\n  .exit-btn { padding: 12px; font-size: 14px; }\n  .btn { padding: 12px; font-size: 15px; }\n  .pick-title { font-size: 12px; margin-bottom: 8px; }\n  .entry p { font-size: 15px; overflow-wrap: anywhere; word-break: break-word; }\n  .char-cards { grid-template-columns: 1fr; }\n  .title-main { font-size: 52px; letter-spacing: 16px; text-indent: 16px; }\n  .title-sub { font-size: 11px; letter-spacing: 3px; }\n  .title-en { font-size: 9px; letter-spacing: 1px; }\n  .title-start { min-width: 190px; padding: 12px 26px; }\n  .modal-inner { padding: 20px 16px; width: 94%; max-height: 90vh; max-height: 90dvh; }\n  .modal h2 { font-size: 18px; letter-spacing: 2px; }\n  .howto-row { padding: 7px 0; font-size: 13px; }\n  .howto-k { flex: 0 0 62px; padding-right: 10px; font-size: 12px; }\n  .char-card { padding: 12px; }\n  footer { display: none; }\n\n  /* ---------- 触摸端操作反馈 ----------\n     触屏没有 hover：:hover 高亮会在点完之后粘住，反而像\"选中了\"。\n     所以统一改成明确的「按下」反馈，并去掉双击缩放的 300ms 判定。 */\n  .choice, .exit-btn, .btn, .clue-btn, .clue-close, .char-card,\n  .title-ver, .title-start, #char-head {\n    touch-action: manipulation;\n    -webkit-tap-highlight-color: transparent; }\n  .choice:active:not(:disabled) { background: #3a2f20; border-left-color: var(--gold); }\n  .exit-btn:active { background: #241d14; border-color: var(--gold-dim); }\n  .btn:active:not(:disabled) { background: #3a2f20; }\n  .char-card:active { border-color: var(--gold); background: var(--panel2); }\n  .title-ver:active { color: var(--gold); border-color: var(--gold-dim); }\n  /* 「重新开始」的二次确认态：一眼看出按钮已经变成确认键 */\n  .btn.armed { background: #4a2320; border-color: var(--red-bright); color: #e8b9b4; }\n\n  /* 超窄屏（≤380px，如 iPhone SE / 小屏安卓）再收一档 */\n  @media (max-width: 380px) {\n    body { max-width: none; }\n    header h1 { font-size: 18px; letter-spacing: 3px; }\n    .wrap { padding: 6px 8px 8px; gap: 6px; }\n    .title-main { font-size: 38px; letter-spacing: 10px; text-indent: 10px; }\n    .title-start { min-width: 160px; padding: 12px 20px; }\n    .panel-action .panel-body { max-height: 30vh; max-height: 30dvh; }\n  }\n\n  /* 手机横屏：提示竖屏使用。只对「触屏 + 矮窗口」生效，\n     桌面把窗口拉宽（有鼠标）不会命中，正常显示竖屏画布。 */\n  #rotate-hint { display: none; }\n  @media (orientation: landscape) and (pointer: coarse) and (max-height: 500px) {\n    #rotate-hint { position: fixed; top:0; right:0; bottom:0; left:0; z-index:900;\n      display: flex; align-items: center; justify-content: center;\n      background: #0b0906; color: var(--gold-dim);\n      font-size: 14px; letter-spacing: 2px; line-height: 2.1; text-align: center; padding: 24px; }\n  }\n\n\n\n  /* ---- DSH Game Studio 宿主适配（只覆盖必须覆盖的） ---- */\n  html { background: #0b0906; }\n  canvas#game { display: none !important; }\n  body { user-select: text; -webkit-user-select: text; }\n";
+  var BODY = "\n<header>\n  <h1>雾谷旧宅</h1>\n  <div class=\"sub\">CALL OF CTHULHU · 悬疑调查 Demo</div>\n  <span class=\"badge\">克苏鲁的呼唤 · D100 · 知识驱动判定</span>\n  <\!-- 右上角常驻入口：随时回看自己查到的线索。\n       此前已知情报只躺在折叠的角色卡里，玩家查到了什么得展开抽屉才知道。 -->\n  <button class=\"clue-btn\" id=\"clue-btn\" type=\"button\">线索 <b id=\"clue-count\">0</b></button>\n  <div class=\"clue-panel\" id=\"clue-panel\">\n    <div class=\"clue-panel-head\">调查笔记<button class=\"clue-close\" id=\"clue-close\" type=\"button\" aria-label=\"关闭\">✕</button></div>\n    <div class=\"clue-panel-body\" id=\"clue-panel-body\"></div>\n  </div>\n</header>\n\n<div class=\"wrap\">\n  <aside class=\"panel panel-char\" id=\"panel-char\">\n    <div class=\"panel-head\" id=\"char-head\">调查员<span class=\"char-toggle\" id=\"char-toggle\">详情 ▾</span></div>\n    <div class=\"panel-body\" id=\"char-body\"><div class=\"empty-hint\">请先选择一名调查员开始。</div></div>\n  </aside>\n  <section class=\"panel panel-log\">\n    <div class=\"panel-head\">剧情记录<span class=\"mini-status\" id=\"mini-status\"></span></div>\n    <div class=\"panel-body\" id=\"log\"></div>\n  </section>\n  <aside class=\"panel panel-action\">\n    <div class=\"panel-head\">行动</div>\n    <div class=\"panel-body\">\n      <div id=\"action\"></div>\n      <button class=\"btn ghost\" id=\"reset-btn\" style=\"margin-top:14px;\">重新开始</button>\n    </div>\n  </aside>\n</div>\n\n<footer>单文件离线 Demo · <span class=\"version-link\" id=\"version-btn-footer\">v1.1.0</span> · 行动由世界状态推导，叙事由判定合成</footer>\n\n<\!-- 手机横屏提示：只对「触屏 + 矮窗口」显示（见 CSS），竖屏与桌面不可见 -->\n<div id=\"rotate-hint\">请把手机竖过来 ↻<br>本作是竖屏游戏</div>\n\n<div class=\"modal\" id=\"title-screen\">\n  <div class=\"title-inner\">\n    <div class=\"title-sub\">CALL OF CTHULHU · 悬疑调查</div>\n    <h1 class=\"title-main\">雾谷旧宅</h1>\n    <div class=\"title-en\">THE OLD HOUSE IN THE FOG VALLEY</div>\n    <button class=\"btn title-start\" id=\"start-btn\" onclick=\"window.__tapStart&&window.__tapStart()\">开始游戏</button>\n    <\!-- 初始文案即「失败态」：若脚本正常执行，会被立刻替换为「已就绪」。\n         这样用户一眼就能判断是环境不执行脚本，而不是按钮坏了。 -->\n    <div class=\"boot-check\" id=\"boot-check\">⚠ 脚本未运行 —— 请点右上角「···」→「在浏览器打开」</div>\n    <noscript>\n      <div class=\"boot-check\">⚠ 当前环境未启用 JavaScript，本 Demo 无法运行。请换用系统浏览器打开。</div>\n    </noscript>\n  </div>\n  <div class=\"title-ver\" id=\"version-btn-title\">v1.1.0</div>\n</div>\n\n<div class=\"modal\" id=\"howto-modal\" style=\"display:none\">\n  <div class=\"modal-inner\">\n    <h2>怎么玩</h2>\n    <p class=\"lead\">1927 年，阿卡姆镇外。你是被雇来查一桩失踪案的调查员。</p>\n    <div class=\"howto\">\n      <div class=\"howto-row\"><span class=\"howto-k\">目标</span><span class=\"howto-v\">查清查尔斯·温特的失踪，并尽量活着离开。</span></div>\n      <div class=\"howto-row\"><span class=\"howto-k\">行动</span><span class=\"howto-v\">点右侧列表里的按钮。<b>深色</b>的是调查 / 交涉 / 取物，<b>暗色</b>的是移动。每次只能选一个。</span></div>\n      <div class=\"howto-row\"><span class=\"howto-k\">判定</span><span class=\"howto-v\">掷 D100，<b>不超过目标值即成功</b>。掷得越低越好：大成功 &gt; 困难成功 &gt; 普通成功 &gt; 失败 &gt; 大失败。</span></div>\n      <div class=\"howto-row\"><span class=\"howto-k\">知识</span><span class=\"howto-v\">你查到的每一条线索，都会变成之后判定的加成。<b>同一件事，知道得越多越容易做成。</b>右上角「线索」随时回看查到了什么。</span></div>\n      <div class=\"howto-row\"><span class=\"howto-k\">一次性</span><span class=\"howto-v\">每个行动只做一次，<b>一次定结果</b>。找不到就是找不到——所以先查什么，很关键。</span></div>\n      <div class=\"howto-row\"><span class=\"howto-k\">异象强度</span><span class=\"howto-v\">左上角的进度条。它会<b>自己上涨</b>，也会被你闹出的动静推高。强度越高，宅子越危险。</span></div>\n      <div class=\"howto-row\"><span class=\"howto-k\">理智</span><span class=\"howto-v\">直面不该看的东西会掉 SAN。<b>掉光就结束了。</b></span></div>\n    </div>\n    <div class=\"howto-tip\">提示：行动列表里的选项会随你的状态变化——查到什么、拿到什么、惊动到什么，都会改变你能做的事。</div>\n    <button class=\"btn\" id=\"howto-ok\" style=\"margin-top:18px;\" onclick=\"window.__tapHowto&&window.__tapHowto()\">明白了，开始调查</button>\n  </div>\n</div>\n\n<div class=\"modal\" id=\"char-modal\" style=\"display:none\">\n  <div class=\"modal-inner\">\n    <h2>选择你的调查员</h2>\n    <p class=\"lead\">1927 年秋，新英格兰阿卡姆镇。一封署名「艾米莉·温特」的委托信，将你引向镇外荒废多年的「雾谷旧宅」。<br>你查到什么，决定你能做什么。</p>\n    <div class=\"char-cards\" id=\"char-cards\"></div>\n  </div>\n</div>\n\n<div class=\"modal\" id=\"changelog-modal\" style=\"display:none\">\n  <div class=\"modal-inner\">\n    <h2>版本公告</h2>\n    <div class=\"clog\" id=\"changelog-body\"></div>\n    <button class=\"btn ghost\" id=\"changelog-close\" style=\"margin-top:16px;\">关闭</button>\n  </div>\n</div>\n\n";
+
+  try {
+    var canvas = document.getElementById("game");
+    if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
+  } catch (e) {}
+
+  var st = document.createElement("style");
+  st.id = "wugu-style";
+  st.textContent = CSS;
+  document.head.appendChild(st);
+
+  document.body.insertAdjacentHTML("beforeend", BODY);
+  document.body.classList.add("wugu-mounted");
+
+  /* 封面槽位：只有【换成真图之后】才挂到标题页当背景。
+   * studio 构建时会给每个槽位带一个 custom 标记（素材来源不是模板占位图才为 true），
+   * 所以占位图阶段标题页保持原本的纯 CSS 观感，出了 AI 封面再自动生效。 */
+  try {
+    var cover = window.GAME && window.GAME.assets && window.GAME.assets.cover;
+    var slot = window.GAME && window.GAME.slots && window.GAME.slots.cover;
+    var title = document.getElementById("title-screen");
+    if (cover && slot && slot.custom === true && title) {
+      /* 标题在画面正中，所以用「中间更暗、上下透出」的叠加 ——
+         宅邸与铁门看得见，标题文字也压得住。 */
+      title.style.backgroundImage =
+        "radial-gradient(ellipse at 50% 44%, rgba(10,8,6,.90) 0%, rgba(10,8,6,.62) 46%," +
+        " rgba(10,8,6,.34) 72%, rgba(10,8,6,.74) 100%), url('" + cover + "')";
+      title.style.backgroundSize = "cover";
+      title.style.backgroundPosition = "center";
+      title.style.backgroundRepeat = "no-repeat";
+    }
+  } catch (e) {}
+})();
+
+
+/* 最早加载：任何脚本错误都直接显示在页面上，而不是静默失效。
+ * 微信内置浏览器（X5 内核）版本较旧时，静默失败最难排查。 */
+window.onerror = function (msg, src, line, col) {
+  try {
+    var d = document.getElementById("__errbox") || document.createElement("div");
+    d.id = "__errbox";
+    d.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#3a1414;" +
+      "color:#ffb4b4;font:12px/1.6 monospace;padding:10px;white-space:pre-wrap;max-height:55%;overflow:auto";
+    d.textContent = "页面运行出错（请截图反馈）：\n" + msg + "\n" + (src || "") + "  第 " + line + " 行";
+    document.body.appendChild(d);
+  } catch (e) {}
+  return false;
+};
+
+
+/* ============================================================
+ * ES5 最小引导层 —— 不依赖主脚本，只用最基础的语法
+ *
+ * 目的：即使主脚本因内核过旧 / 被容器限制而【整体失败】，
+ *       前两步（标题 → 说明 → 选角）也一定能走通；
+ *       同时把启动状态显示在页面上，便于定位问题所在。
+ * ============================================================ */
+(function () {
+  var MODALS = ["title-screen", "howto-modal", "char-modal", "changelog-modal"];
+  function setDisp(id, v) { var e = document.getElementById(id); if (e) e.style.display = v; }
+
+  /* 互斥显示：只让目标弹窗出现 */
+  window.__showModal = function (id) {
+    for (var i = 0; i < MODALS.length; i++) setDisp(MODALS[i], MODALS[i] === id ? "flex" : "none");
+  };
+  window.__tapStart = function () { window.__showModal("howto-modal"); };
+  window.__tapHowto = function () { window.__showModal("char-modal"); };
+
+  window.__bootCheck = function (txt, bad) {
+    var e = document.getElementById("boot-check");
+    if (e) { e.textContent = txt; e.style.color = bad ? "#c0483e" : "#6b6254"; }
+  };
+  /* 能执行到这一行 → 脚本是通的 */
+  window.__bootCheck("引导层已加载 · 构建 1126062637");
+
+  /* 主脚本若迟迟未接上，说明它失败了 —— 直接说明原因和出路 */
+  setTimeout(function () {
+    if (window.__dshBooted) { window.__bootCheck("已就绪 · 构建 1126062637"); return; }
+    window.__bootCheck("主脚本未启动（浏览器内核过旧或被限制）", true);
+    var d = document.createElement("div");
+    d.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#3a1414;" +
+      "color:#ffb4b4;font:13px/1.7 sans-serif;padding:14px;white-space:pre-wrap";
+    d.textContent = "页面未能正常启动。\n\n请尝试：\n1. 点右上角「···」→「在浏览器打开」\n2. 或把微信更新到最新版\n3. 或换用 Safari / Chrome 打开";
+    document.body.appendChild(d);
+  }, 1200);
+})();
+
+
+/* ============================================================
+ * 雾谷旧宅 · 判定引擎（v1.0）
+ *
+ * 从前身 v2 继承：三维正交判定 + 知识去冗余 + 分层（细档位叙事 / 粗门槛世界变化）
+ * 本版新增三项扩展：
+ *   ① 道具门槛    —— 行动可声明 requires.items
+ *   ② 揭示产出物品 —— 揭示层可直接授予 item
+ *   ③ 世界状态     —— world.flags 参与规则推导
+ * ============================================================ */
+var Engine = (function () {
+  "use strict";
+
+  /* ---------- 意图 ---------- */
+  var INTENTS = {
+    observe:   { label: "观察", danger: 0, noise: 0, contact: 2 },
+    traverse:  { label: "移动", danger: 0, noise: 0, contact: 0 },
+    social:    { label: "交涉", danger: 1, noise: 1, contact: 1 },
+    search:    { label: "翻找", danger: 1, noise: 1, contact: 1 },
+    take:      { label: "拿取", danger: 2, noise: 2, contact: 1 },
+    destroy:   { label: "破坏", danger: 3, noise: 3, contact: 1 },
+    intervene: { label: "干预", danger: 3, noise: 3, contact: 0 }
+  };
+
+  var TIER_VAL = { crit: 3, hard: 2, success: 1, fail: -1, fumble: -4 };
+  var TIER_CN = { crit: "大成功", hard: "困难成功", success: "普通成功", fail: "失败", fumble: "大失败" };
+  var ACH_ORDER = { "反效果": -1, "未达成": 0, "部分达成": 1, "达成": 2, "完全达成": 3 };
+  var ACH_BANDS = [
+    { min: 2, name: "完全达成" }, { min: 0, name: "达成" },
+    { min: -2, name: "部分达成" }, { min: -4, name: "未达成" },
+    { min: -Infinity, name: "反效果" }
+  ];
+  var COST_BANDS = [
+    { min: 5, name: "严重" }, { min: 3, name: "中度" },
+    { min: 1, name: "轻微" }, { min: -Infinity, name: "无" }
+  ];
+
+  function bandOf(score, bands) {
+    for (var i = 0; i < bands.length; i++) if (score >= bands[i].min) return bands[i].name;
+    return bands[bands.length - 1].name;
+  }
+  function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+  function verdict(roll, target) {
+    if (roll <= 5) return "crit";
+    if (roll >= 96) return "fumble";
+    if (roll <= Math.floor(target / 2)) return "hard";
+    if (roll <= target) return "success";
+    return "fail";
+  }
+
+  /* 去冗余：被其他已知 fact 蕴含的整条剔除
+   * ⚠ 数据约定：A implies B 时，A 的 method/protect 必须是含 B 在内的超集 */
+  function effectiveFacts(world, FACTS) {
+    var have = (world.facts || []).filter(function (f) { return !!FACTS[f]; });
+    var redundant = {};
+    have.forEach(function (f) {
+      ((FACTS[f].implies) || []).forEach(function (r) { redundant[r] = true; });
+    });
+    return have.filter(function (f) { return !redundant[f]; });
+  }
+
+  /**
+   * 核心判定。
+   * @param world  { actor, facts, items, flags, scene:{npc}, enemy:{terror} }
+   * @param intent { kind, target }
+   * @param TABLES { OBJECTS, FACTS }
+   * @param forcedRoll 可选，便于测试
+   */
+  function resolve(world, intent, TABLES, forcedRoll) {
+    var OBJECTS = TABLES.OBJECTS, FACTS = TABLES.FACTS;
+    var obj = OBJECTS[intent.target];
+    if (!obj) throw new Error("未知对象: " + intent.target);
+    var I = INTENTS[intent.kind];
+    if (!I) throw new Error("未知意图: " + intent.kind);
+
+    var difficulty = obj.diff[intent.kind] != null ? obj.diff[intent.kind] : 2;
+
+    /* 选技能：对象可指定该意图对应的技能，否则按候选里最高的算 */
+    var skillName = null, skillTarget = 20;
+    var cands = (obj.skill && obj.skill[intent.kind]) || intent.skill || null;
+    if (cands) {
+      var list = Array.isArray(cands) ? cands : [cands];
+      list.forEach(function (sn) {
+        var v = world.actor.skills[sn] || 0;
+        if (v > skillTarget - 1 || skillName === null) { if (v > skillTarget || skillName === null) { skillName = sn; skillTarget = v; } }
+      });
+      if (skillName === null) { skillName = list[0]; skillTarget = world.actor.skills[list[0]] || 20; }
+    }
+
+    var roll = forcedRoll != null ? forcedRoll : Math.floor(Math.random() * 100) + 1;
+    var tier = verdict(roll, skillTarget);
+    var tierVal = TIER_VAL[tier];
+
+    var facts = effectiveFacts(world, FACTS);
+    var sum = function (field) {
+      return facts.reduce(function (a, f) {
+        return a + (((FACTS[f][field]) || {})[intent.kind] || 0);
+      }, 0);
+    };
+    var methodBonus = sum("method");
+    var protectBonus = sum("protect");
+    var wounded = world.actor.hp <= world.actor.hpMax / 2 ? 1 : 0;
+
+    /* 只有【真正参与本次判定】的知识才算「用上了」——
+     * 否则会把玩家已有的全部知识都列出来，变成无意义的复述。
+     * 下游用 fact.echo（应用句）呈现，而不是 fact.text（原始线索）。 */
+    var appliedFacts = facts.filter(function (f) {
+      var F = FACTS[f];
+      return (((F.method) || {})[intent.kind] || 0) !== 0
+          || (((F.protect) || {})[intent.kind] || 0) !== 0;
+    });
+
+    /* ① 达成分 */
+    var achScore = tierVal + methodBonus - difficulty - wounded;
+    var achievement = bandOf(achScore, ACH_BANDS);
+
+    /* ② 代价分（因子集与达成分不重叠） */
+    var exposure = I.danger + Math.floor((world.enemy ? world.enemy.terror : 0) / 5);
+    var costScore = exposure - tierVal - protectBonus;
+    var costLevel = bandOf(costScore, COST_BANDS);
+    var cost = {
+      level: costLevel,
+      hp: { "无": 0, "轻微": 0, "中度": 1, "严重": 2 }[costLevel],
+      san: (costLevel === "严重" && world.enemy && world.enemy.terror >= 7) ? 1 : 0,
+      noise: (I.noise > 0 && costLevel !== "无") ? 1 : 0
+    };
+
+    /* ③ 揭示分（不含难度，与达成度解耦）
+     * 揭示是【累积】的：看到第 N 层 = 同时看到 0..N 层全部内容。
+     * 否则掷得越好反而会跳过浅层的关键发现（如「发现暗门」）。 */
+    var insight = tierVal + I.contact + Math.min(facts.length, 3);
+    var reveal = null, revealLayer = -1, revealedClues = [];
+    var newFacts = [], newItems = [], newFlags = [];
+    /* 细档位管叙事、粗门槛管结构：
+     * insight 决定挖到第几层（0..3）；其中第 4 层是「冗余来源」层，
+     * 改挂粗门槛 ord>=1 —— 一次掷差不该让玩家永久失去某条知识的第二个来源。 */
+    var maxLayer = Math.min(3, (obj.layers ? obj.layers.length : 1) - 1);
+    if (insight >= 0 && obj.layers && obj.layers.length) {
+      revealLayer = clamp(insight <= 1 ? 0 : (insight <= 3 ? 1 : (insight <= 5 ? 2 : 3)), 0, maxLayer);
+      if (maxLayer >= 3 && ACH_ORDER[achievement] >= 1) revealLayer = 3;
+      for (var li = 0; li <= revealLayer; li++) {
+        var L = obj.layers[li];
+        if (L.clue) revealedClues.push(L.clue);
+        if (L.fact && newFacts.indexOf(L.fact) < 0) newFacts.push(L.fact);
+        if (L.item && newItems.indexOf(L.item) < 0) newItems.push(L.item);
+        if (L.flag && newFlags.indexOf(L.flag) < 0) newFlags.push(L.flag);
+      }
+      reveal = revealedClues[revealedClues.length - 1] || null;
+    }
+
+    var delta = deriveDelta(world, intent, obj, achievement, {
+      ord: ACH_ORDER[achievement], cost: cost, flags: world.flags || {}, tier: tier
+    });
+    /* 揭示层可直接写入世界状态（如「发现暗门」） */
+    newFlags.forEach(function (f) { delta.flags[f] = true; });
+
+    /* 【修复 ③】规则 3 / 规则 10 会把【可交互对象】的 id 当成【道具】id 塞进背包：
+     * 带「可拾取」标签的是 pantryLoot（储藏室杂物）、hearth（客厅壁炉）和 amulet（护符），
+     * 前两个不在 ITEMS 表里（ITEMS 只有 key / crowbar / amulet）。背包一旦混入 "hearth"，
+     * 界面读 Content.ITEMS["hearth"].name 就抛 TypeError，行动链当场断掉。
+     * 真道具本来就由揭示层的 L.item 授予（撬棍 / 旧钥匙），所以这里只保留真道具 id。 */
+    if (delta.items && delta.items.length) {
+      delta.items = delta.items.filter(function (id) {
+        return !!(TABLES.ITEMS && TABLES.ITEMS[id]);
+      });
+    }
+
+    return {
+      action: I.label + "·" + obj.name,
+      kind: intent.kind, target: intent.target,
+      skill: skillName, roll: roll, target: skillTarget, tier: TIER_CN[tier], tierRaw: tier, tierVal: tierVal,
+      factsUsed: appliedFacts, methodBonus: methodBonus, protectBonus: protectBonus, difficulty: difficulty,
+      achScore: achScore, achievement: achievement,
+      costScore: costScore, cost: cost,
+      insight: insight, reveal: reveal, revealLayer: revealLayer, revealedClues: revealedClues,
+      newFacts: newFacts, newItems: newItems, newFlags: newFlags,
+      newFact: newFacts[0] || null, newItem: newItems[0] || null, newFlag: newFlags[0] || null,
+      delta: delta
+    };
+  }
+
+  /* ============================================================
+   * 世界变化规则（10 条）
+   * 原则：硬性变化挂在【粗门槛】上（ord），细档位只影响叙事
+   * ============================================================ */
+  function deriveDelta(world, intent, obj, achievement, ctx) {
+    var d = { npc: {}, process: [], enemyAdvance: 0, items: [], flags: {}, log: [] };
+    var ord = ctx.ord;
+    var tags = obj.tags || [];
+    var has = function (t) { return tags.indexOf(t) >= 0; };
+
+    /* 规则 0：大失败永远有后果 —— 即使分数落在「未达成」区间 */
+    if (ctx.tier === "fumble") ord = -1;
+
+    /* 规则 1：反效果 → 帮倒忙（敌方推进；交涉则激怒对方），且不产生任何正面效果 */
+    if (ord < 0) {
+      d.enemyAdvance = 1;
+      d.log.push("弄巧成拙");
+      if (intent.kind === "social" && world.scene.npc) d.npc.charles = "敌意";
+      return d;
+    }
+    /* 规则 2：未达成 → 场景维持原状（关键一致性保证） */
+    if (ord === 0) return d;
+
+    /* ── 以下仅当「部分达成」及以上 ── */
+
+    /* 规则 3：挪动枢纽 → 过程崩解 + NPC 依当前状态迁移 */
+    if (intent.kind === "take" && has("枢纽")) {
+      d.process.push("仪式失去阵眼");
+      d.items.push(intent.target);
+      d.flags.secret_ritual_broken = true;
+      if (world.scene.npc && world.scene.npc.charles === "沉浸") d.npc.charles = "动摇";
+      d.enemyAdvance = 1;
+    }
+    /* 规则 4：破坏枢纽 → 过程终结 */
+    if (intent.kind === "destroy" && has("枢纽")) {
+      d.process.push("仪式崩解");
+      d.flags.ritual_destroyed = true;
+      d.enemyAdvance = -1;
+    }
+    /* 规则 5：交涉 → NPC 分级迁移（按【交涉目标】判定，支持多个 NPC）
+     * 查尔斯：沉浸 → 动摇 → 清醒 / 敌意
+     * 艾米莉（妹妹）：门外 → 焦急 → 知情 / 崩溃 */
+    if (intent.kind === "social" && world.scene.npc) {
+      var LADDERS = {
+        charles: { up: "清醒", mid: "动摇", down: "敌意" },
+        emily: { up: "知情", mid: "焦急", down: "崩溃" }
+      };
+      var who = LADDERS[intent.target] ? intent.target : "charles";
+      var ladder = LADDERS[who];
+      var cur = world.scene.npc[who];
+      if (cur && ladder) {
+        var next = ord >= 2 ? ladder.up : (ord === 1 ? ladder.mid : ladder.down);
+        if (next !== cur) d.npc[who] = next;
+      }
+    }
+
+    /* 规则 5b：【修复 ①】special「letHim」→ 清醒的查尔斯亲手取下护符，交到你手里。
+     * 为什么需要它：自己夺护符（take / amulet）在敌方状态机里是 clock+99、threat+4 的
+     * 自杀式动作；「先唤醒他、再让他动手」才是安全路线，也是通往最佳结局
+     * 「黎明破晓」（ritual_destroyed + 他清醒）的正路。
+     * 这条分支此前只在内容里声明了 special、引擎从不读取，等于点了一次普通交涉 —— 死分支。
+     * 门槛遵循本作原则走粗门槛 ord>=1（未达成时规则 2 已提前 return，场景维持原状）。 */
+    if (intent.special === "letHim" && ord >= 1) {
+      d.process.push("查尔斯亲手取下护符");
+      if (d.items.indexOf("amulet") < 0) d.items.push("amulet");
+    }
+    /* 规则 6：开启通道 → 世界状态改变 */
+    if (has("通道") && (intent.kind === "take" || intent.kind === "destroy" || intent.kind === "traverse")) {
+      d.flags["opened_" + intent.target] = true;
+      d.log.push("通道开启：" + obj.name);
+    }
+    /* 规则 7：动静 → 惊动 */
+    if (ctx.cost.noise && ord <= 2 && has("易响")) {
+      d.flags.alarmed = true;
+      d.log.push("惊动了宅子");
+    }
+    /* 规则 8：潜行达标 → 未被察觉（供后续场景判定） */
+    if (intent.kind === "traverse" && intent.stealth) {
+      if (ord >= 2) d.flags.stealth = true; else d.flags.spotted = true;
+    }
+    /* 规则 9：观察达到深层 → 额外看穿一层 */
+    if (intent.kind === "observe" && achievement === "完全达成") {
+      d.log.push("看穿了更深一层");
+    }
+    /* 规则 10：取得道具 */
+    if (has("可拾取") && ord >= 2) {
+      if (d.items.indexOf(intent.target) < 0) d.items.push(intent.target);
+    }
+    /* 规则 11：成功的拿取 / 破坏 → 记录完成标记
+     * 供场景出口解锁使用（如「撬开铁门」→ 才能推开正门进前厅） */
+    if (intent.kind === "take" || intent.kind === "destroy") {
+      d.flags["did_" + intent.target] = true;
+    }
+
+    return d;
+  }
+
+  return {
+    INTENTS: INTENTS, TIER_VAL: TIER_VAL, TIER_CN: TIER_CN,
+    ACH_ORDER: ACH_ORDER, ACH_BANDS: ACH_BANDS, COST_BANDS: COST_BANDS,
+    bandOf: bandOf, verdict: verdict, effectiveFacts: effectiveFacts,
+    resolve: resolve, deriveDelta: deriveDelta
+  };
+})();
+
+
+/* ============================================================
+ * 雾谷旧宅 · 内容层（v1.0）
+ *   3 道具 / 24 可交互对象 / 23 条知识 / 15 个场景 / 叙事素材库
+ * ============================================================ */
+var Content = (function () {
+  "use strict";
+
+  /* ---------- 一、道具 ---------- */
+  var ITEMS = {
+    key:     { name: "旧钥匙", desc: "可以无声打开书房暗门" },
+    crowbar: { name: "撬棍", desc: "能撬开暗门，但会发出声响" },
+    amulet:  { name: "护符", desc: "温特家从海外带回的石符，仪式的阵眼" },
+    /* v1.1.0 序幕：两人各自带出来的东西（效果挂在知识上，道具本身只管叙事） */
+    kit:     { name: "侦探笔记", desc: "前半本记着别的案子，后半本全是雾谷" },
+    bag:     { name: "出诊包", desc: "外科器械齐备，砸东西时格外趁手" },
+    salt:    { name: "粗盐", desc: "祭坛边围圈用的盐；撒下去能挡住一次东西靠近" }
+  };
+
+  /* ---------- 二、可交互对象 ----------
+   * diff / tags / layers(浅→深，可带 fact / item / flag) */
+  var OBJECTS = {
+    /* ===== 知识行动的目标（v1.1.0 出口）：
+     * 只有查到了对应知识，这些行动才会出现在列表里 —— 这就是「知识的出口」。 ===== */
+    mirrorEye: { name: "穿衣镜的反光", diff: { observe: 2 }, skill: { observe: ["侦查", "神秘学"] },
+      layers: [{ clue: "不去看它，就不会被它看见——你贴着墙绕了过去" }] },
+    cellarHint: { name: "信里提到的那道门", diff: { traverse: 1 }, skill: { traverse: ["侦查"] },
+      layers: [{ clue: "按信里的说法，封死的那道门在更下面——你直接找到了它", fact: "f_cellarDoor" }] },
+    rockerAim: { name: "摇椅对着的方向", diff: { observe: 1 }, skill: { observe: ["侦查"] },
+      layers: [{ clue: "把摇椅挪开半步：它正对着的，是通往二楼的楼梯", fact: "f_rocker" }] },
+    coldSpot: { name: "那处冷意", diff: { intervene: 2 }, skill: { intervene: ["神秘学", "侦查"] },
+      layers: [{ clue: "你站定不动。冷意从脚底升上来，比刚才更近了一点" },
+               { clue: "它没有源头：整座宅子本身就是冷的，你只是终于承认了这件事", fact: "f_cold" }] },
+    portraitBack: { name: "肖像的背面", diff: { observe: 2 }, skill: { observe: ["侦查", "图书馆使用"] },
+      layers: [{ clue: "画框背面贴着一张纸条：「他七岁那年，我第一次看见它」", fact: "f_photo" }] },
+    runeMap: { name: "符文的方位", diff: { observe: 2 }, skill: { observe: ["神秘学", "侦查"] },
+      layers: [{ clue: "把符文连起来是一个朝向祭坛的漏斗——阵眼就是它的口", fact: "f_hub" },
+               { clue: "漏斗的口正对着祭坛中央；阵眼一挪，整座宅子的「醒」就散了", fact: "f_hub" }] },
+    notesOrder: { name: "按页码排好的笔记", diff: { observe: 1 }, skill: { observe: ["图书馆使用", "侦查"] },
+      layers: [{ clue: "排好才看出来：他一直在按「日」记，而且早就写到了第七日", fact: "f_notes" }] },
+
+    /* ===== 第四幕 · 雨中的门廊（v1.1.0）：妹妹到场 ===== */
+    emily: { name: "艾米莉·温特", diff: { social: 1, intervene: 1 }, skill: { social: ["心理学", "说服"] },
+      layers: [{ clue: "她没打伞，头发贴在脸上，手里攥着那封委托信的副本" },
+               { clue: "她说自己一整天都在镇口等消息：「我知道他出事了，我就是知道。」" },
+               { clue: "她的袖口沾着泥——她自己来过这里，而且不止一次", fact: "f_emily_arrived" }] },
+    watch: { name: "怀表", diff: { observe: 1 }, skill: { observe: ["侦查"] },
+      layers: [{ clue: "表停在三点十七分——正是你听说他失踪的那个时刻" }] },
+    notebook: { name: "摊开的笔记", diff: { observe: 1 }, skill: { observe: ["侦查", "图书馆使用"] },
+      layers: [{ clue: "把线索按时间排开，能看出仪式每一步都踩在「日」上" }] },
+
+    /* ===== 地下扩展（v1.1.0）：酒窖 / 储肉间 ===== */
+    cask: { name: "酒桶", diff: { observe: 2 }, skill: { observe: ["聆听", "侦查"] },
+      layers: [{ clue: "桶身积着厚灰，橡木缝里却透出一线风" },
+               { clue: "敲上去，回音是空的——桶后有夹层", flag: "hollow_behind" },
+               { clue: "凑近桶缝听，从夹层里渗出来的是一段时断时续的吟诵", fact: "f_whisper" }] },
+    tally: { name: "墙上的刻痕计数", diff: { observe: 1 }, skill: { observe: ["侦查", "图书馆使用"] },
+      layers: [{ clue: "墙上一排竖刻，一组五道，一直刻到几十" },
+               { clue: "最后一组刻到第六道就停了，旁边写着「七日」", fact: "f_tally" },
+               { clue: "刻痕的高度和地窖那道抓痕一样——是同一个人刻的", fact: "f_cellarWall" }] },
+    hooks: { name: "挂肉的铁钩", diff: { observe: 1 }, skill: { observe: ["侦查", "神秘学"] },
+      layers: [{ clue: "一排铁钩，本该挂着腌肉" },
+               { clue: "钩尖上的残留不是兽血——凝得太久，也太黑", flag: "not_beast_blood" },
+               { clue: "再往里一步，墙上是一排同高度的抓痕——这里关过活人", fact: "f_cellarWall" }] },
+    drain: { name: "地面的排水格", diff: { take: 2 }, skill: { take: ["力量", "侦查"] },
+      layers: [{ clue: "铁格锈死了，缝里塞着头发和蜡" },
+               { clue: "撬开之后，底下是一条斜向下的暗渠——朝着祭坛室的方向", flag: "drain_to_altar" },
+               { clue: "渠壁上有同高度的抓痕，一道接一道，一路向里", fact: "f_cellarWall" }] },
+    saltPile: { name: "墙角的盐堆", diff: { search: 1 }, tags: ["可拾取"], skill: { search: ["侦查"] },
+      layers: [{ clue: "墙角堆着粗盐，围成一个不完整的圈" },
+               { clue: "这圈是拿来挡住什么的——缺口断得很急，像有人来不及", item: "salt" },
+               { clue: "盐圈的内侧画着一小段拉丁文，和地窖墙上那段是同一种笔迹", fact: "f_latin" }] },
+    prayerLatin: { name: "墙上的拉丁文", diff: { intervene: 2 }, skill: { intervene: ["神秘学", "图书馆使用"] },
+      layers: [{ clue: "砖缝里刻着一段拉丁文，字母被反复描过" },
+               { clue: "你逐字念了出来：这是一段「未完成的仪式」——必须等到第七日才能收尾", fact: "f_latin" },
+               { clue: "也就是说：只要在收尾之前打断它，仪式就废了" },
+               { clue: "抄本最下面还有一行小字：若它已经成形，唯一的路是毁掉阵眼", fact: "f_ends" }] },
+
+    /* ===== 二层三房（v1.1.0）：中段从 0.75 行动/房间补到 3+ ===== */
+    crib: { name: "空摇篮", diff: { observe: 1 }, skill: { observe: ["侦查", "聆听"] },
+      layers: [{ clue: "摇篮里铺着干净的被褥，却落了薄灰" },
+               { clue: "床脚有拖动的痕迹——摇篮是从别处搬进来的", flag: "crib_emptied" },
+               { clue: "被褥的尺寸是按七岁孩子备的，之后再没换过", fact: "f_child" }] },
+    marks: { name: "墙上的身高刻痕", diff: { observe: 1 }, skill: { observe: ["侦查", "心理学"] },
+      layers: [{ clue: "门框边一排刻痕，最高的一道停在七岁" },
+               { clue: "刻痕旁边写着名字缩写：C.W.", fact: "f_child" },
+               { clue: "七岁那年之后，再没有新的刻痕" }] },
+    toybox: { name: "玩具箱", diff: { search: 1 }, tags: ["可拾取"], skill: { search: ["侦查"] },
+      layers: [{ clue: "箱里是些木马、积木，还有一只缝得歪歪扭扭的布偶" },
+               { clue: "布偶的肚子里缝着一片暗绿色石屑", flag: "amulet_shard" },
+               { clue: "石屑的断口和族谱里夹着的那张剪报对得上——这件东西是温特家带回来的", fact: "f_truth" }] },
+    nurseryWindow: { name: "婴儿房的窗", diff: { traverse: 1 }, skill: { traverse: ["力量", "敏捷"] },
+      layers: [{ clue: "窗外靠着一架木梯，一直搭到屋檐" },
+               { clue: "梯子是新钉的——有人反复上下过", flag: "found_ladder" }] },
+    bed: { name: "客房床铺", diff: { observe: 1 }, skill: { observe: ["侦查", "聆听"] },
+      layers: [{ clue: "床罩很平整，枕头上却有一个浅坑" },
+               { clue: "床单是三天内换的——可这宅子里已经没有活人了", fact: "f_guest" },
+               { clue: "屋里比走廊冷得多，且冷得没有来处", fact: "f_cold" }] },
+    trunk: { name: "床脚的旅行箱", diff: { take: 2 }, tags: ["易响"], skill: { take: ["力量", "侦查"] },
+      layers: [{ clue: "箱子锁着，不过锁扣上有新鲜的撬痕" },
+               { clue: "箱里是女人的行装——一把撬棍压在衣服上", item: "crowbar" },
+               { clue: "夹层里还藏着一把旧钥匙，配得起书房那把锁", item: "key" }] },
+    dresser: { name: "五斗柜", diff: { search: 1 }, skill: { search: ["侦查"] },
+      layers: [{ clue: "抽屉里叠着几封信，收信人都是查尔斯" },
+               { clue: "字迹是艾米莉的。最后一封只有一句：「别一个人去」", flag: "emily_letters" },
+               { clue: "最早一封写于两年前，那时查尔斯刚搬进雾谷——她一直在劝他别去", fact: "f_emily" }] },
+    mirror2: { name: "柜门上的镜子", diff: { observe: 1 }, skill: { observe: ["侦查", "神秘学"] },
+      layers: [{ clue: "镜面蒙着雾，却有一块是干的" },
+               { clue: "干的那块是一张脸的形状——比你的脸低一点", fact: "f_mirror2" },
+               { clue: "你退开半步再看：镜里的动作，确确实实慢了半拍", fact: "f_mirror" }] },
+    bellBoard: { name: "唤人铃的响铃记录", diff: { observe: 1 }, skill: { observe: ["侦查", "图书馆使用"] },
+      layers: [{ clue: "木板上一排铃铛，各自连着一个房间" },
+               { clue: "二楼那只铃的摆锤被磨亮了——它响过很多次，却没人上去", flag: "bell_rang_upstairs" }] },
+    boots: { name: "床下的鞋", diff: { observe: 1 }, skill: { observe: ["侦查"] },
+      layers: [{ clue: "一双沾泥的男鞋，鞋头朝着床，摆得很整齐" },
+               { clue: "另一双是女鞋——仆人的鞋不在这间房里", flag: "servant_gone" },
+               { clue: "床垫还是软的，被褥有刚晒过的味道：这间房有人住", fact: "f_guest" }] },
+    ledger: { name: "用度账本", diff: { search: 2 }, skill: { search: ["图书馆使用", "侦查"] },
+      layers: [{ clue: "账本记到三个月前，之后一笔没写" },
+               { clue: "最后几页记着一笔奇怪的运费：从海外运回一件「石制器物」", fact: "f_ledger" },
+               { clue: "收款人签名被撕掉了，只留下一个「温」字", fact: "f_crest" }] },
+    uniform: { name: "挂在门后的制服", diff: { observe: 1 }, skill: { observe: ["侦查", "心理学"] },
+      layers: [{ clue: "制服口袋里有张对折的纸" },
+               { clue: "是没交出去的辞呈，只写了一行：「我不干了，这宅子里有东西。」", flag: "servant_quit" }] },
+    crawl: { name: "墙后的窄缝", diff: { traverse: 2 }, skill: { traverse: ["敏捷", "侦查"] },
+      layers: [{ clue: "踢脚线松了，后面是一道能爬进去的缝" },
+               { clue: "缝里通着风声——尽头往上，正是阁楼那一层", flag: "crawl_attic" },
+               { clue: "贴耳听，缝里传上来的是一段时断时续的吟诵", fact: "f_whisper" }] },
+
+    /* ===== 一层新增（v1.1.0）：查得到、也用得上 ===== */
+    carriage: { name: "门廊水洼与车辙", diff: { observe: 1 }, skill: { observe: ["侦查", "聆听"] },
+      layers: [{ clue: "车辙很新，车轮陷进泥里又退了出去——马车没有走远" },
+               { clue: "车厢很轻：来的人不多，走的人更少", flag: "carriage_near" }] },
+    bell: { name: "门厅的唤人铃", diff: { intervene: 1 }, tags: ["易响"], skill: { intervene: ["力量", "侦查"] },
+      layers: [{ clue: "铃绳绷得很紧，上面积着薄灰，只有一小段被抹过" },
+               { clue: "你拉响了它。回音撞在空房子里，一路传上去", flag: "rang_bell" }] },
+    sideboard: { name: "餐边柜", diff: { search: 1 }, tags: ["可拾取"], skill: { search: ["侦查"] },
+      layers: [{ clue: "柜里本该有一套银餐具，位置空着，衬布上留着压痕" },
+               { clue: "不是被偷——银器被人整整齐齐收走了", flag: "silver_gone" }] },
+    backPath: { name: "后门外的脚印", diff: { observe: 1 }, skill: { observe: ["侦查"] },
+      layers: [{ clue: "后门外有一条往回走的脚印，一路通到侧院栅门" },
+               { clue: "有人在雨里等过很久——脚印在原地反复踩出一小片泥", flag: "has_backpath" }] },
+    coalBox: { name: "壁炉旁的煤箱", diff: { search: 1 }, skill: { search: ["侦查", "力量"] },
+      layers: [{ clue: "煤是新的，炉灰却是冷的——有人添过煤，却很久没生火" },
+               { clue: "箱底压着半张烧剩的报纸，日期是三天前" },
+               { clue: "报纸边角有蹲行的擦痕，和后窗那道是同一个方向", fact: "f_stove" }] },
+    blotter: { name: "书桌上的便签本", diff: { observe: 2 }, skill: { observe: ["侦查", "图书馆使用"] },
+      layers: [{ clue: "上一页被撕走了，压痕还留在下面那张上" },
+               { clue: "把压痕描出来，是两个反复出现的字：「第七日」", fact: "f_blotter" }] },
+
+    /* ===== 序幕·侦探所（v1.1.0） ===== */
+    commission: { name: "艾米莉的委托信", diff: { observe: 1 }, skill: { observe: ["侦查", "心理学"] },
+      layers: [{ clue: "信纸是上好的道林纸，字迹却抖得厉害" },
+               { clue: "她只写了「失踪三天」，一句没提查尔斯最近在做什么", fact: "f_emily" },
+               { clue: "信末有一句被划掉的话：「别一个人去」" }] },
+    files: { name: "分局旧卷宗", diff: { search: 1 }, skill: { search: ["图书馆使用", "侦查"] },
+      layers: [{ clue: "阿卡姆近三年有四起失踪，最后都结成了「自行离开」" },
+               { clue: "四起失踪的人，住处都在雾谷方向", fact: "f_arkham" },
+               { clue: "卷宗末页夹着一张手绘地图——雾谷旧宅被圈了三道" }] },
+    clippings: { name: "剪报簿", diff: { observe: 2 }, skill: { observe: ["神秘学", "图书馆使用"] },
+      layers: [{ clue: "剪报里夹着温特家 1899 年从海外归来的船期" },
+               { clue: "同一年，温特家的长子「意外」身亡" }] },
+    kitbox: { name: "随身装备", diff: { take: 1 }, skill: { take: ["侦查"] }, tags: ["可拾取"],
+      layers: [{ clue: "笔记本、手电，一把折叠刀" },
+               { clue: "笔记本后半本全是雾谷——你自己都没意识到记了这么多", item: "kit" }] },
+    officeDoor: { name: "侦探所的门", diff: { traverse: 1 }, skill: { traverse: ["侦查", "敏捷"] },
+      layers: [{ clue: "雨点砸在玻璃上。马车夫在门外按了两声喇叭" }] },
+
+    /* ===== 序幕·医生家中（v1.1.0） ===== */
+    record: { name: "查尔斯的病历卡", diff: { observe: 1 }, skill: { observe: ["图书馆使用", "心理学"] },
+      layers: [{ clue: "最后一次就诊在两个月前，主诉是「睡不着，听见墙里有声音」" },
+               { clue: "你当时写了「建议转精神科」——他没有去", fact: "f_charles_health" },
+               { clue: "卡的背面有一行不是你的字迹：「第七日之前」" }] },
+    medicineBox: { name: "出诊药箱", diff: { search: 1 }, skill: { search: ["侦查"] }, tags: ["可拾取"],
+      layers: [{ clue: "吗啡少了一支，登记本上却没有记录" },
+               { clue: "少掉的那支，是你自己上周给查尔斯开的", fact: "f_medicine" },
+               { clue: "药箱底层压着一封没寄出的信，收信人是艾米莉" }] },
+    phone: { name: "墙上的电话", diff: { social: 1 }, skill: { social: ["说服", "心理学"] },
+      layers: [{ clue: "线路是通的，接电话的正是艾米莉本人" },
+               { clue: "她说查尔斯「最近不太对」，却始终不肯说哪里不对", flag: "emily_half" }] },
+    bagbox: { name: "出诊包", diff: { take: 1 }, skill: { take: ["侦查"] }, tags: ["可拾取"],
+      layers: [{ clue: "器械、绷带，一本翻旧的解剖图谱" },
+               { clue: "图谱里夹着一份温特家的族谱抄本", item: "bag" }] },
+    clinicDoor: { name: "诊所的门", diff: { traverse: 1 }, skill: { traverse: ["敏捷", "侦查"] },
+      layers: [{ clue: "雨很大。你拧熄了灯，门闩落下时响了一声" }] },
+
+    gate: { name: "铁门", diff: { observe: 1, take: 2 }, tags: ["易响"], skill: { take: ["力量", "敏捷"], observe: ["侦查"] },
+      layers: [{ clue: "锁是后来加上的，比门本身新得多" }, { clue: "锁孔周围有反复撬动的划痕——不止一个人试过" }] },
+    wallOut: { name: "围墙", diff: { observe: 1 }, skill: { observe: ["侦查"] },
+      layers: [{ clue: "侧院有一条踩出来的窄道" }, { clue: "窄道尽头是一扇挂着锈链的小门", flag: "side_found" }] },
+    footprints: { name: "门廊脚印", diff: { observe: 1 }, skill: { observe: ["侦查", "聆听"] },
+      layers: [{ clue: "脚印一路拖向宅子深处" }, { clue: "只有进入的脚印，没有离开的", fact: "f_footprints" }, { clue: "其中一双鞋底纹路很新，不属于乡下人" }] },
+    letter: { name: "门口信件", diff: { observe: 1 }, skill: { observe: ["图书馆使用", "侦查"] },
+      layers: [{ clue: "信纸被雨水泡烂了大半" }, { clue: "查尔斯写着：「我已把地下室封死，绝不能让『它』找到出路」", fact: "f_letter" }, { clue: "落款日期是三天前——正是他失踪那天" }] },
+    stove: { name: "灶台与铁锅", diff: { observe: 1 }, skill: { observe: ["侦查"] },
+      layers: [{ clue: "锅里的食物发霉已久" }, { clue: "灶台边有新鲜刮痕，一直延伸到后窗", fact: "f_stove" }, { clue: "刮痕的高度说明有人是蹲着挪过去的——在躲什么" }] },
+    window: { name: "厨房后窗", diff: { observe: 1 }, skill: { observe: ["侦查"] },
+      layers: [{ clue: "窗闩从里侧被撬断" }, { clue: "窗框挂着一小截撕裂的深色布料", fact: "f_cloth" }, { clue: "布料浸过海水，还带着异国的染色味——不属于阿卡姆" }] },
+    backdoor: { name: "厨房后门", diff: { observe: 1 }, skill: { observe: ["侦查"] },
+      layers: [{ clue: "后门从内反锁，锁舌是新换的", fact: "f_backdoor" }, { clue: "门轴被人上过油——有人常走这道门" }] },
+    pantryLoot: { name: "储藏室杂物", diff: { search: 1 }, tags: ["可拾取"], skill: { search: ["侦查"] },
+      layers: [{ clue: "一层厚灰，底下压着些零碎" }, { clue: "杂物下压着一根结实的撬棍", item: "crowbar" }, { clue: "撬棍柄上缠着布条，是有人特意做的" }] },
+    table: { name: "长桌与餐具", diff: { observe: 1 }, skill: { observe: ["侦查", "聆听"] },
+      layers: [{ clue: "两副餐具，一份几乎没动" }, { clue: "打翻的那份旁，桌布上有干涸的暗色污渍", fact: "f_table" }, { clue: "污渍边缘有拖拽痕迹，一路通向地下室门口" }] },
+    hearth: { name: "客厅壁炉", diff: { observe: 1, search: 2 }, tags: ["可拾取"], skill: { observe: ["侦查"], search: ["侦查"] },
+      layers: [{ clue: "炉膛里积着厚厚的灰" }, { clue: "灰里埋着一角烧焦的纸片：「仪式」「第七日」", fact: "f_ash" }, { clue: "灰烬底下压着一把冰凉的旧钥匙", item: "key" }] },
+    rocker: { name: "摇椅", diff: { observe: 1 }, tags: ["可怖"], skill: { observe: ["侦查"] },
+      layers: [{ clue: "摇椅在穿堂风里轻轻晃着" }, { clue: "椅面上有一处浅浅的凹陷——刚才还有人坐着", fact: "f_rocker" }, { clue: "你伸手去碰椅面，那点余温凉得不像人留下的", fact: "f_cold" }] },
+    mirror: { name: "前厅穿衣镜", diff: { observe: 1 }, tags: ["可怖"], skill: { observe: ["侦查"] },
+      layers: [{ clue: "镜面裂了一道细纹，把倒影一分为二", fact: "f_mirror" }, { clue: "镜子里的房间，和你身后的房间不太一样" }] },
+    wall: { name: "书架后的墙", diff: { observe: 2 }, tags: ["通道"], skill: { observe: ["侦查", "潜行"] },
+      layers: [{ clue: "敲上去声音发空" }, { clue: "挪开书架，露出一道窄窄的暗门", fact: "f_secret", flag: "opened_wall" }, { clue: "暗门边缘的灰被抹开过——有人常走这条路" }] },
+    portrait: { name: "肖像画", diff: { observe: 1 }, tags: ["可怖"], skill: { observe: ["侦查"] },
+      layers: [{ clue: "画中人的眼睛低垂着" }, { clue: "画框下角刻着：「温特家的每一代人，都逃不过这双眼睛」", fact: "f_portrait" }, { clue: "画框背面钉着名牌：「WINTER · 第三代」——查尔斯的祖父" }] },
+    desk: { name: "书桌与抽屉", diff: { observe: 1, search: 1 }, skill: { observe: ["图书馆使用", "侦查"], search: ["图书馆使用", "侦查"] },
+      layers: [{ clue: "抽屉里多是水电账单与旧地图" }, { clue: "压着一本皮面笔记本，字迹歪斜" }, { clue: "日记写着：「它在祭坛下，在墙里。我若不再醒来，请务必毁掉那枚护符」", fact: "f_diary" }] },
+    secretDoor: { name: "书房暗门", diff: { take: 2, destroy: 2, traverse: 2 }, tags: ["通道", "易响"], skill: { take: ["力量"], destroy: ["力量"] },
+      layers: [{ clue: "门缝里透出向下的寒气" }] },
+    photo: { name: "床头合影", diff: { observe: 1 }, skill: { observe: ["侦查", "图书馆使用"] },
+      layers: [{ clue: "相片受潮，只看清两个人影" }, { clue: "第三个人你从未见过", fact: "f_photo" }, { clue: "那第三个人长着与画像一模一样的眼睛" }] },
+    notes: { name: "散落的笔记", diff: { observe: 1, search: 1 }, skill: { observe: ["图书馆使用", "侦查"], search: ["图书馆使用", "侦查"] },
+      layers: [{ clue: "笔记大多被撕碎" }, { clue: "查尔斯从海外带回一块「来历不明的石符」" }, { clue: "自从它出现，他夜夜听见墙里的低语", fact: "f_notes" }] },
+    chest: { name: "阁楼旧箱", diff: { take: 2, observe: 1 }, skill: { take: ["力量"], observe: ["侦查"] },
+      layers: [{ clue: "箱子锈死，只撬开一条缝" }, { clue: "里面是一叠泛黄的族谱与剪报" }, { clue: "温特家先祖曾与「雾谷之物」立约，每一代长子都会被它召回", fact: "f_truth" }] },
+    cellarWall: { name: "地窖墙上的痕迹", diff: { observe: 1 }, skill: { observe: ["侦查", "神秘学"] },
+      layers: [{ clue: "墙上刻着与日记相同的符号" }, { clue: "还有抓挠留下的指甲印" }, { clue: "抓痕都在同一高度，指缝里嵌着干掉的灰浆——有人被绑在这里很久", fact: "f_cellarWall" }] },
+    cellarDoor: { name: "被封死的暗门", diff: { observe: 1 }, skill: { observe: ["侦查"] },
+      layers: [{ clue: "一道被砖石封死的墙" }, { clue: "封口的灰浆还是新的", fact: "f_cellarDoor" }, { clue: "有人从这一侧把退路也堵上了" }] },
+    doorDown: { name: "地下室门", diff: { observe: 1 }, skill: { observe: ["聆听"] },
+      layers: [{ clue: "门缝里渗出湿冷的霉味" }, { clue: "门后极轻的吟诵声时断时续", fact: "f_whisper" }, { clue: "还夹杂着刮擦石板的声响——那不是风声" }] },
+    runes: { name: "祭坛符文", diff: { observe: 1, destroy: 3 }, tags: ["易响"], skill: { observe: ["神秘学", "图书馆使用"], destroy: ["力量"] },
+      layers: [{ clue: "刻痕扭曲、重复、彼此咬合" }, { clue: "护符被一圈符文围绕——它是阵眼", fact: "f_hub" }, { clue: "阵列的走向指向同一个方向：唯有彻底毁掉护符，才能真正了结", fact: "f_ends" }] },
+    amulet: { name: "护符", diff: { observe: 1, take: 2, destroy: 3 }, tags: ["枢纽", "可拾取"], skill: { observe: ["侦查", "神秘学"], take: ["躲闪", "敏捷"], destroy: ["神秘学"] },
+      layers: [{ clue: "护符入手冰凉" }, { clue: "它在掌心微微搏动，像有生命" }, { clue: "背面刻着温特家的纹章——它本就是这家人带回来的", fact: "f_crest" }] },
+    charles: { name: "查尔斯", diff: { observe: 1, social: 2, intervene: 2 }, skill: { observe: ["侦查"], social: ["心理学", "说服"], intervene: ["心理学"] },
+      layers: [{ clue: "他喃喃的语句里反复出现同一个音节" }, { clue: "他右手始终攥着一样东西，指节发白" }, { clue: "他攥着的是一把仪式刀，刀刃朝着自己的方向", fact: "f_knife" }] }
+  };
+
+  /* ---------- 三、知识 ----------
+   * label   = 短标签（用于「已记入」标记，避免复读正文）
+   * text    = 原始线索（角色卡「已知情报」里显示）
+   * echo    = 应用句（该知识在判定中生效时显示，必须是【新内容】而非复述）
+   * method  = 提升达成；protect = 削减代价；implies = 逻辑蕴含（去重用）
+   * ⚠ A implies B 时，A 的 method/protect 必须是含 B 在内的超集 */
+  var FACTS = {
+    /* ===== 序幕（v1.1.0）：三条都带出口 ===== */
+    f_emily:          { label: "委托细节", text: "艾米莉只写了「失踪三天」，没提查尔斯最近在做什么", echo: "你想起她刻意略过的那一段，问话时便有了方向。",
+      method: { social: 1, observe: 1 }, protect: {}, implies: [] },
+    f_arkham:         { label: "四起失踪", text: "阿卡姆三年四起失踪，都朝雾谷方向", echo: "这不是第一次了 —— 你因此看得懂那些被抹掉的痕迹。",
+      method: { observe: 1, search: 1 }, protect: {}, implies: [] },
+    f_charles_health: { label: "查尔斯的病", text: "他两个月前就听见墙里的声音；你建议转诊，他没去", echo: "你比谁都清楚他现在的状态，因此下得去手。",
+      method: { social: 1 }, protect: { destroy: 1, take: 1 }, implies: [] },
+    f_medicine:       { label: "少掉的吗啡", text: "少掉的那支吗啡，是你开给查尔斯的", echo: "药理的常识让你在动手前先稳住了自己。",
+      method: {}, protect: { destroy: 1, social: 1 }, implies: [] },
+    /* 一层新增：与 f_ash 是同一件事的两个来源（implies 会把重复加成扣掉一次） */
+    f_blotter:        { label: "第七日压痕", text: "被撕走的便签上反复写着「第七日」", echo: "「第七日」你已经不止见过一次 —— 它不是巧合。",
+      method: { observe: 1, search: 1 }, protect: {}, implies: ["f_ash"] },
+    /* 二层四房新增：每条都带出口（f_child→血脉交涉，f_guest→敌方认知，f_mirror2→免惊动，f_ledger→结局 8） */
+    f_child:          { label: "七岁之后", text: "门框上的刻痕停在七岁，旁边写着 C.W.", echo: "你知道查尔斯在这个房间长到七岁，然后忽然不再长高。",
+      method: { observe: 1, social: 1 }, protect: {}, implies: [] },
+    f_guest:          { label: "刚换的床单", text: "客房床单是三天内换的，宅里却已经没有活人", echo: "有人一直住在这里 —— 你因此不再把每个脚步声都当成错觉。",
+      method: { observe: 1 }, protect: { social: 1 }, implies: [] },
+    f_mirror2:        { label: "低一点的倒影", text: "镜上一块干痕，是一张比你低一点的脸", echo: "镜子里那张脸的高度，你现在会下意识地去对。",
+      method: { observe: 1, intervene: 1 }, protect: {}, implies: ["f_mirror"] },
+    f_ledger:         { label: "海外运费", text: "账本最后几笔记着从海外运回一件「石制器物」", echo: "那件器物的来路写在一笔账里 —— 它是被买回来的。",
+      method: { search: 1, observe: 1 }, protect: {}, implies: ["f_crest"] },
+    /* 地下两房：f_tally 与 f_ash 同源（implies 会扣掉重复加成），f_latin 是「打断仪式」的钥匙 */
+    f_tally:          { label: "刻到七日", text: "墙上的竖刻数到几十，最后一组停在「七日」", echo: "有人在数日子 —— 而且数到第七日就停了。",
+      method: { observe: 1 }, protect: {}, implies: ["f_ash"] },
+    f_latin:          { label: "未完成的仪式", text: "拉丁文写明：仪式必须等到第七日才能收尾", echo: "既然它必须等到第七日，那就赶在那之前动手。",
+      method: { intervene: 1, destroy: 1 }, protect: { destroy: 1 }, implies: [] },
+    f_emily_arrived:  { label: "她自己来过", text: "艾米莉袖口沾着泥——她来过这里，不止一次", echo: "她早就自己找过一遍了 —— 你因此把她说过的每句话重新过了一遍。",
+      method: { social: 1 }, protect: {}, implies: [] },
+
+    f_footprints: { label: "拖痕脚印", text: "脚印一路拖向深处，无人离开", echo: "你顺着那道拖痕的走向判断方位。",
+      method: { observe: 1 }, protect: {}, implies: [] },
+    f_letter:     { label: "封死的信", text: "查尔斯已把地下室封死，劝人勿入", echo: "你想起那句「绝不能让『它』找到出路」，动手时格外留神。",
+      method: { observe: 1 }, protect: { take: 1, destroy: 1 }, implies: [] },
+    f_stove:      { label: "蹲行刮痕", text: "有人蹲着挪向后窗，像在躲什么", echo: "你知道曾有人贴着地面挪动，于是也压低了身子。",
+      method: { observe: 1 }, protect: {}, implies: [] },
+    f_cloth:      { label: "异国布料", text: "后窗挂着一截浸过海水的异国布料", echo: "那截布料的触感还留在指间，让你对被遮住的东西格外警觉。",
+      method: { observe: 1 }, protect: {}, implies: [] },
+    f_backdoor:   { label: "换过的后门", text: "后门锁是新换的、门轴上过油", echo: "你摸清了这扇门的脾性，推开时几乎没发出声响。",
+      method: {}, protect: { take: 1 }, implies: [] },
+    f_table:      { label: "血迹拖痕", text: "血迹拖拽一路通向地下室门口", echo: "你顺着那道拖痕的方向摸过去。",
+      method: { observe: 1 }, protect: {}, implies: [] },
+    f_ash:        { label: "烧焦纸片", text: "烧焦纸片：「仪式」「第七日」", echo: "「第七日」这三个字在你脑子里转了一圈。",
+      method: { destroy: 1 }, protect: {}, implies: [] },
+    f_rocker:     { label: "椅上凹陷", text: "摇椅上的凹陷是新的", echo: "你知道那把椅子刚才还坐着人，绕开时避开了它正对的方向。",
+      method: { observe: 1 }, protect: {}, implies: [] },
+    f_mirror:     { label: "镜中异样", text: "镜中的房间与身后的不一样", echo: "你刻意不去看任何反光的地方。",
+      method: { observe: 1 }, protect: { observe: 1 }, implies: [] },
+    f_secret:     { label: "墙后暗门", text: "书房墙后有一条通往地下的暗门", echo: "你知道墙后另有通路，手的落点因此稳了许多。",
+      method: {}, protect: {}, implies: [] },
+    f_portrait:   { label: "肖像刻字", text: "「温特家的每一代人，都逃不过这双眼睛」", echo: "那双眼睛的注视让你后背发凉，但你强迫自己站定了。",
+      method: { social: 1 }, protect: {}, implies: [] },
+    f_crest:      { label: "护符纹章", text: "护符背面刻着温特家纹章——是这家人带回来的", echo: "你知道这东西的来历，下手的力道因此有了分寸。",
+      method: { destroy: 1 }, protect: {}, implies: [] },
+    f_photo:      { label: "第三人", text: "合影第三人长着与画像一样的眼睛", echo: "那张合影里的第三个人一直浮在你眼前。",
+      method: { social: 1 }, protect: {}, implies: [] },
+    f_diary:      { label: "查尔斯日记", text: "日记：「它在祭坛下；务必毁掉那枚护符」", echo: "查尔斯那句「务必毁掉」，此刻在你耳边响得很清楚。",
+      method: { destroy: 2 }, protect: { destroy: 1 }, implies: [] },
+    f_notes:      { label: "查尔斯笔记", text: "石符招来了墙里的低语", echo: "你想起笔记里那两个字，对这栋宅子的死寂不再意外。",
+      method: { destroy: 1 }, protect: {}, implies: [] },
+    f_truth:      { label: "族谱记载", text: "温特家长子世代被「雾谷之物」召回", echo: "你知道温特家世世代代的结局，开口时少了犹豫。",
+      method: { social: 2 }, protect: { social: 1 }, implies: ["f_portrait"] },
+    f_cellarWall: { label: "地窖抓痕", text: "有人被绑在地窖里很久", echo: "那道同一高度的抓痕，让你不敢在原地久留。",
+      method: {}, protect: { observe: 1 }, implies: [] },
+    f_cellarDoor: { label: "从内侧封死", text: "有人从内侧把退路也封死了", echo: "你知道退路曾被堵死，所以留意着每一处出口。",
+      method: {}, protect: { take: 1 }, implies: [] },
+    f_whisper:    { label: "门后异响", text: "门后是吟诵与刮擦，不是风声", echo: "你已经分辨出那不是风。",
+      method: { observe: 1 }, protect: { take: 1 }, implies: [] },
+    f_hub:        { label: "阵眼", text: "护符是仪式阵眼", echo: "你知道该往哪里用力。",
+      method: { destroy: 2, take: 1 }, protect: { destroy: 1 }, implies: [] },
+    f_ends:       { label: "了结之法", text: "唯有彻底毁掉才能真正了结", echo: "你知道唯一的了结方式，动作里没有半分迟疑。",
+      method: { destroy: 3 }, protect: { destroy: 1 }, implies: ["f_hub"] },
+    f_knife:      { label: "仪式刀", text: "查尔斯手里握着仪式刀", echo: "你避开他右手的活动范围。",
+      method: { social: 2 }, protect: { social: 2, take: 1 }, implies: [] },
+    f_cold:       { label: "寒意无源", text: "冷意没有源头，宅子本身就是冷的", echo: "你不再去找寒意的源头，只是忍受它。",
+      method: { observe: 1 }, protect: { observe: 1 }, implies: [] }
+  };
+
+  /* ---------- 四、场景 ----------
+   * acts = 内容型行动；exits = 移动（独立于选项系统） */
+  var SCENES = {
+    /* ===== 序幕（v1.1.0）：两条路各 4 个行动 + 1 个新手检定，都汇入铁门 =====
+     * 新手检定用 alwaysFlags 保底：即使掷差也一定推进，绝不把新人卡在第一步。 */
+    office: { name: "侦探所", enter: "1927 年秋，阿卡姆镇，雨下了一整夜。侦探所的灯只亮着一盏，桌上摊着艾米莉·温特的委托信——她哥哥查尔斯，已经失踪三天。",
+      acts: [
+        { id: "letter", label: "再看一遍那封委托信", kind: "observe", target: "commission", alwaysFlags: ["did_letter"] },
+        { id: "files", label: "翻出分局的旧卷宗", kind: "search", target: "files" },
+        { id: "clippings", label: "翻看剪报簿", kind: "observe", target: "clippings" },
+        { id: "kitbox", label: "收好笔记本与手电", kind: "take", target: "kitbox" }
+      ],
+      exits: [{ to: "gate", label: "披上外套，出门（雨夜 · 雾谷）", when: function (w) { return !!w.flags.did_letter; } }] },
+
+    clinic: { name: "医生家中", enter: "1927 年秋，阿卡姆镇，雨下了一整夜。诊所的灯还亮着——你本打算今晚早睡。艾米莉·温特两小时前来过，她哥哥查尔斯，已经失踪三天。",
+      acts: [
+        { id: "card", label: "核对查尔斯的病历卡", kind: "observe", target: "record", alwaysFlags: ["did_card"] },
+        { id: "box", label: "检查药箱里少掉的药", kind: "search", target: "medicineBox" },
+        { id: "call", label: "给艾米莉回个电话", kind: "social", target: "phone" },
+        { id: "bagbox", label: "拿上出诊包", kind: "take", target: "bagbox" }
+      ],
+      exits: [{ to: "gate", label: "冒雨出门（雨夜 · 雾谷）", when: function (w) { return !!w.flags.did_card; } }] },
+
+    gate: { name: "铁门", enter: "雨势渐密。铁门锈蚀半开，一把新锁把它扣死。常春藤如干枯的手指爬满高墙，门廊下积着昨夜的水洼。",
+      acts: [
+        /* 铁门是必经之路：即使撬锁失败，门终究会被弄开，只是动静很大 */
+        { id: "lock", label: "撬开铁门的大锁", kind: "take", target: "gate",
+          alwaysFlags: ["did_gate"], failFlags: ["alarmed"] },
+        { id: "walk", label: "沿围墙寻找别的入口", kind: "observe", target: "wallOut" },
+        { id: "porch", label: "看门廊下的水洼与车辙", kind: "observe", target: "carriage" }
+      ],
+      /* 出口由行为解锁：撬开门 / 找到侧道，才有路可走 */
+      exits: [
+        { to: "hall", label: "推开正门，进入前厅", when: function (w) { return !!w.flags.did_gate; } },
+        { to: "kitchen", label: "顺着侧院窄道，绕到厨房窗下", when: function (w) { return !!w.flags.side_found; } }
+      ] },
+
+    hall: { name: "前厅", enter: "前厅空旷阴冷，吊灯结满蛛网。正对大门立着一面蒙尘的穿衣镜，镜面裂了一道细纹。",
+      acts: [
+        { id: "fp", label: "调查门廊地面的脚印", kind: "observe", target: "footprints" },
+        { id: "lt", label: "翻查门口小桌上的信件", kind: "observe", target: "letter" },
+        { id: "mr", label: "端详那面穿衣镜", kind: "observe", target: "mirror" },
+        { id: "bell", label: "摇响门厅的唤人铃", kind: "intervene", target: "bell" }
+      ],
+      exits: [{ to: "dining", label: "去餐厅" }, { to: "parlor", label: "去客厅" }, { to: "study", label: "直奔书房" },
+              /* 第四幕入口：摇过铃、知道「第七日」，或已经察觉这宅子里还住着人 */
+              { to: "porchNight", label: "到门廊去（雨里有人在喊门）",
+                when: function (w) { return !!w.flags.rang_bell || w.facts.indexOf("f_ash") >= 0 || w.facts.indexOf("f_guest") >= 0; } }] },
+
+    kitchen: { name: "厨房", enter: "厨房狭小，弥漫着腐败食物的酸味。一口锅倒扣在地上，橱柜门大敞。",
+      acts: [
+        { id: "st", label: "检查翻倒的锅与地面", kind: "observe", target: "stove" },
+        { id: "wd", label: "查看后窗与窗台", kind: "observe", target: "window" },
+        { id: "bd", label: "检查厨房后门", kind: "observe", target: "backdoor" },
+        { id: "backhall", label: "看后门外的脚印", kind: "observe", target: "backPath" },
+        { id: "cellarHint", label: "照信里说的，去找封死的那道门", kind: "traverse", target: "cellarHint",
+          when: function (w) { return w.facts.indexOf("f_letter") >= 0 || w.facts.indexOf("f_table") >= 0 || w.facts.indexOf("f_whisper") >= 0; },
+          alwaysFlags: ["shortcut_down"] }
+      ],
+      exits: [{ to: "pantry", label: "去储藏室" }, { to: "dining", label: "去餐厅" }] },
+
+    pantry: { name: "储藏室", enter: "储藏室堆满杂物，木架上的瓶罐蒙着厚灰，墙角靠着一把生锈的铁锹。",
+      acts: [{ id: "loot", label: "翻找杂物堆", kind: "search", target: "pantryLoot" }],
+      exits: [{ to: "parlor", label: "去客厅" }] },
+
+    dining: { name: "餐厅", enter: "餐厅里摆着一张长桌，铺着发霉的桌布。桌上两副餐具，一份几乎没动。",
+      acts: [{ id: "tb", label: "观察长桌与餐具", kind: "observe", target: "table" },
+        { id: "sideboard", label: "翻一翻餐边柜", kind: "search", target: "sideboard" }],
+      exits: [{ to: "parlor", label: "去客厅" }, { to: "study", label: "去书房" }] },
+
+    parlor: { name: "客厅", enter: "壁炉早已熄了，炉膛里积着厚厚的灰。一张摇椅背对着你，在穿堂风里轻轻晃。",
+      acts: [
+        { id: "hs", label: "翻看壁炉里的灰烬", kind: "search", target: "hearth" },
+        { id: "rk", label: "检查那张摇椅", kind: "observe", target: "rocker" },
+        { id: "coal", label: "掀开壁炉旁的煤箱", kind: "search", target: "coalBox" },
+        { id: "moveRocker", label: "把摇椅挪开，看它对着什么", kind: "observe", target: "rockerAim",
+          when: function (w) { return w.facts.indexOf("f_rocker") >= 0; } },
+        { id: "standCold", label: "站在那处冷意里，等它变", kind: "intervene", target: "coldSpot",
+          when: function (w) { return w.facts.indexOf("f_cold") >= 0 || w.facts.indexOf("f_stove") >= 0; } }
+      ],
+      exits: [{ to: "study", label: "去书房" }, { to: "stairwell", label: "去楼梯间" }] },
+
+    study: { name: "书房", enter: "书房空气凝滞，油灯将尽，桌角堆着纸张。墙上挂着一幅肖像，目光低垂。",
+      acts: [
+        { id: "dk", label: "翻查书桌与抽屉", kind: "search", target: "desk" },
+        { id: "wl", label: "敲击书架后的墙壁", kind: "observe", target: "wall" },
+        { id: "pt", label: "凝视墙上那幅肖像", kind: "observe", target: "portrait" },
+        { id: "sd", label: "用钥匙或撬棍打开暗门", kind: "take", target: "secretDoor",
+          requires: { items: ["key", "crowbar"] }, fallback: "门锁着。你需要一把钥匙，或一根撬棍。" },
+        { id: "blotter", label: "看便签本上的压痕", kind: "observe", target: "blotter" },
+        /* 出口：知道墙后是暗门，就不必再翻钥匙撬棍 */
+        { id: "secretByKnowledge", label: "凭笔记里的方位找暗门开关", kind: "take", target: "secretDoor",
+          when: function (w) { return w.facts.indexOf("f_secret") >= 0; },
+          alwaysFlags: ["did_secretDoor"] },
+        { id: "portraitBack", label: "把肖像摘下来看背面", kind: "observe", target: "portraitBack",
+          when: function (w) { return w.facts.indexOf("f_portrait") >= 0 || w.facts.indexOf("f_photo") >= 0; } }
+      ],
+      exits: [
+        { to: "basement", label: "沿暗门窄道，直下祭坛室（捷径）", when: function (w) { return !!w.flags.did_secretDoor; } },
+        { to: "stairwell", label: "走正门去楼梯间" }
+      ] },
+
+    stairwell: { name: "楼梯间", enter: "楼梯间盘旋而上，另有一道向下的窄门。向上的楼梯蒙着灰，向下透着寒气。",
+      acts: [], exits: [{ to: "master", label: "上楼" }, { to: "basementstair", label: "下楼" }, { to: "study", label: "回书房" }] },
+
+    /* ===== 二层三房（v1.1.0）：中段不再空转 ===== */
+    nursery: { name: "婴儿房", enter: "婴儿房在走廊尽头。一张空摇篮摆在窗下，被褥干净得不像这栋房子里的东西。",
+      acts: [
+        { id: "crib", label: "看那口空摇篮", kind: "observe", target: "crib" },
+        { id: "marks", label: "读门框上的身高刻痕", kind: "observe", target: "marks" },
+        { id: "toybox", label: "翻玩具箱", kind: "search", target: "toybox" },
+        { id: "nurseryWindow", label: "推开窗，看外面的木梯", kind: "traverse", target: "nurseryWindow" }
+      ],
+      exits: [{ to: "attic", label: "顺着木梯爬上阁楼（捷径）", when: function (w) { return !!w.flags.found_ladder; } },
+              { to: "master", label: "回主卧" }] },
+
+    guestroom: { name: "客房", enter: "客房收拾得很整齐，床铺平整，衣柜紧闭。空气里有股很淡的皂味。",
+      acts: [
+        { id: "bed", label: "掀开客床的床罩", kind: "observe", target: "bed" },
+        { id: "trunk", label: "撬开床脚的旅行箱", kind: "take", target: "trunk" },
+        { id: "dresser", label: "翻五斗柜的抽屉", kind: "search", target: "dresser" },
+        { id: "mirror2", label: "看柜门上的镜子", kind: "observe", target: "mirror2" },
+        { id: "avert", label: "贴着墙绕过去，不看那面镜子", kind: "observe", target: "mirrorEye",
+          when: function (w) { return w.facts.indexOf("f_mirror") >= 0 || w.facts.indexOf("f_mirror2") >= 0; },
+          alwaysFlags: ["avoided_mirror"] }
+      ],
+      exits: [{ to: "servantroom", label: "去仆人房" }, { to: "master", label: "回主卧" }] },
+
+    servantroom: { name: "仆人房", enter: "仆人房在走廊最里侧，两张窄床，一面墙上挂满唤人铃。",
+      acts: [
+        { id: "bellBoard", label: "查唤人铃的响铃记录", kind: "observe", target: "bellBoard" },
+        { id: "boots", label: "看床下的鞋", kind: "observe", target: "boots" },
+        { id: "ledger", label: "翻用度账本", kind: "search", target: "ledger" },
+        { id: "uniform", label: "摸挂在门后的制服", kind: "observe", target: "uniform" },
+        { id: "crawl", label: "爬进墙后的窄缝", kind: "traverse", target: "crawl" }
+      ],
+      exits: [{ to: "attic", label: "从墙缝钻进阁楼（捷径）", when: function (w) { return !!w.flags.crawl_attic; } },
+              { to: "guestroom", label: "去客房" }, { to: "master", label: "回主卧" }] },
+
+    master: { name: "主卧", enter: "主卧落满灰尘，双人床的帐幔已经朽烂。床头柜上放着一张褪色的合影。走廊两侧还有几扇关着的门。",
+      acts: [{ id: "ph", label: "查看床头的合影", kind: "observe", target: "photo" }],
+      exits: [{ to: "nursery", label: "去婴儿房" }, { to: "guestroom", label: "去客房" },
+              { to: "servantroom", label: "去仆人房" },
+              { to: "charlesroom", label: "去查尔斯的房间" }, { to: "stairwell", label: "返回楼梯间" }] },
+
+    charlesroom: { name: "查尔斯的房间", enter: "房间被翻得乱七八糟，抽屉全部拉开，纸张散落一地。",
+      acts: [{ id: "nt", label: "翻查散落的笔记", kind: "search", target: "notes" },
+        { id: "notesOrder", label: "把散落的纸按页码排好", kind: "observe", target: "notesOrder",
+          when: function (w) { return w.facts.indexOf("f_notes") >= 0; } }],
+      exits: [{ to: "attic", label: "去阁楼" }, { to: "stairwell", label: "返回楼梯间" }] },
+
+    attic: { name: "阁楼", enter: "阁楼低矮逼仄，堆着温特家几代人的旧物。角落里有一口落满灰的箱子。",
+      acts: [{ id: "ch", label: "撬开那口旧箱子", kind: "take", target: "chest" }],
+      exits: [{ to: "stairwell", label: "返回楼梯间" }] },
+
+    basementstair: { name: "地下室楼梯", enter: "石阶又窄又陡，湿滑。一股霉味混着若有若无的吟诵声从底下渗上来。",
+      acts: [{ id: "dn", label: "贴着门倾听下面的动静", kind: "observe", target: "doorDown" }],
+      exits: [{ to: "cellar", label: "走下去" }] },
+
+    cellar: { name: "地窖", enter: "地窖里堆着酒桶与木箱，墙上有一道被砖石封死的暗门。侧墙开着一条通酒窖的窄道。",
+      acts: [
+        { id: "cw", label: "观察墙上的刻痕与抓痕", kind: "observe", target: "cellarWall" },
+        { id: "cd", label: "检查那道被封死的暗门", kind: "observe", target: "cellarDoor" },
+        /* 出口：知道「从内侧封死」才敢动手 —— 这条知识直接解锁一个行动 */
+        { id: "cellarDoor2", label: "推开那道封死的暗门", kind: "take", target: "cellarDoor",
+          when: function (w) { return w.facts.indexOf("f_cellarDoor") >= 0 || w.facts.indexOf("f_cellarWall") >= 0; },
+          alwaysFlags: ["opened_cellarDoor"] },
+        { id: "prayer", label: "逐字念墙上的拉丁文", kind: "intervene", target: "prayerLatin" }
+      ],
+      exits: [{ to: "winecellar", label: "进酒窖" }, { to: "basement", label: "走向祭坛室" }] },
+
+    winecellar: { name: "酒窖", enter: "酒窖比地窖更深，酒桶一直码到顶。霉味里混着一丝铁锈味。",
+      acts: [
+        { id: "cask", label: "敲酒桶听回音", kind: "observe", target: "cask" },
+        { id: "tally", label: "看墙上的刻痕计数", kind: "observe", target: "tally" }
+      ],
+      exits: [{ to: "meatroom", label: "推开桶后的暗门", when: function (w) { return !!w.flags.hollow_behind; } },
+              { to: "cellar", label: "回地窖" }] },
+
+    meatroom: { name: "储肉间", enter: "储肉间比想象中大。铁钩从梁上垂下来，地面中央是一块锈死的排水格。",
+      acts: [
+        { id: "hooks", label: "看挂肉的铁钩", kind: "observe", target: "hooks" },
+        { id: "drain", label: "撬开地面的排水格", kind: "take", target: "drain" },
+        { id: "salt", label: "翻墙角的盐堆", kind: "search", target: "saltPile" }
+      ],
+      exits: [{ to: "basement", label: "钻进暗渠，直达祭坛室（捷径）", when: function (w) { return !!w.flags.drain_to_altar; } },
+              { to: "winecellar", label: "回酒窖" }] },
+
+    basement: { name: "祭坛室", enter: "烛火围成诡异的环。查尔斯背对着你跪在祭坛前，喃喃自语。祭坛中央，一枚暗绿色的护符泛着幽光。",
+      acts: [
+        { id: "rn", label: "观察祭坛四周的符文", kind: "observe", target: "runes" },
+        { id: "ob", label: "观察跪着的查尔斯", kind: "observe", target: "charles" },
+        { id: "am", label: "端详祭坛中央的护符", kind: "observe", target: "amulet" },
+        { id: "wk", label: "低声呼唤查尔斯的名字", kind: "social", target: "charles",
+          when: function (w) { return w.scene.npc.charles === "沉浸" || w.scene.npc.charles === "动摇"; } },
+        { id: "tk", label: "冲上去夺走护符", kind: "take", target: "amulet" },
+        { id: "lh", label: "（他已清醒）让他自己取下护符", kind: "social", target: "charles", special: "letHim",
+          when: function (w) { return w.scene.npc.charles === "清醒" && w.items.indexOf("amulet") < 0; } },
+        { id: "ds", label: "毁掉手中的护符", kind: "destroy", target: "amulet",
+          when: function (w) { return w.items.indexOf("amulet") >= 0; } },
+        /* ===== 知识出口（v1.1.0）：查到什么，就能做什么 ===== */
+        { id: "runeMap", label: "推演符文围成的方位", kind: "observe", target: "runeMap",
+          when: function (w) { return w.facts.indexOf("f_hub") >= 0; } },
+        { id: "breakRitual", label: "按拉丁文的方位打断仪式", kind: "intervene", target: "runes",
+          when: function (w) { return w.facts.indexOf("f_latin") >= 0 || w.facts.indexOf("f_arkham") >= 0 || w.facts.indexOf("f_knife") >= 0; },
+          alwaysFlags: ["ritual_interrupted"] },
+        { id: "bloodTalk", label: "说出温特家的血脉真相", kind: "social", target: "charles",
+          when: function (w) { return w.facts.indexOf("f_truth") >= 0 || w.facts.indexOf("f_child") >= 0; } },
+        { id: "medTalk", label: "「你是我的病人。醒过来。」", kind: "social", target: "charles",
+          when: function (w) { return w.facts.indexOf("f_charles_health") >= 0 || w.facts.indexOf("f_medicine") >= 0; } },
+        { id: "letterTalk", label: "把艾米莉信里最后那句念给他听", kind: "social", target: "charles",
+          when: function (w) { return w.facts.indexOf("f_emily_arrived") >= 0 || !!w.flags.emily_letters; } }
+      ],
+      exits: [{ to: "final", label: "带着护符，直面终局", when: function (w) { return w.items.indexOf("amulet") >= 0; } },
+              { to: "stairwell", label: "退出祭坛室" }] },
+
+    final: { name: "终局", isFinal: true, altar: true,
+      enter: "护符的光芒骤然暴涨。祭坛后的阴影里，一团没有固定形体的黑暗缓缓隆起。它——醒了。",
+      acts: [], exits: [] },
+
+    /* ===== 第四幕（v1.1.0）：雨中的门廊 =====
+     * 妹妹到场，可交涉 —— 引擎规则 5 已支持第二个 NPC 的分级迁移。 */
+    porchNight: { name: "雨中的门廊", enter: "你退回门廊。雨比来时更大。铁门外的路上停着一辆湿透的马车——车灯还亮着，有人在车边喊你的名字。",
+      npc: { emily: "门外" },
+      acts: [
+        { id: "emily1", label: "迎上去", kind: "social", target: "emily", alwaysFlags: ["emily_arrived"] },
+        { id: "emily2", label: "劝她在门外等", kind: "social", target: "emily",
+          when: function (w) { return w.scene.npc.emily === "门外" || w.scene.npc.emily === "焦急"; },
+          alwaysFlags: ["emily_waiting"] },
+        { id: "emily3", label: "告诉她查尔斯可能已经……", kind: "social", target: "emily",
+          when: function (w) { return w.scene.npc.emily === "焦急" || w.scene.npc.emily === "知情" || w.scene.npc.emily === "崩溃" || w.facts.indexOf("f_emily") >= 0; },
+          alwaysFlags: ["emily_knows"] },
+        /* 出口：让妹妹看到护符（有账本佐证她的来路也算） —— 结局「送回温特家」由此成立 */
+        { id: "emily4", label: "让她看一眼护符", kind: "intervene", target: "emily",
+          when: function (w) { return (w.facts.indexOf("f_crest") >= 0 || w.facts.indexOf("f_ledger") >= 0) && w.items.indexOf("amulet") >= 0; },
+          alwaysFlags: ["emily_shown"] },
+        { id: "emily5", label: "带她一起进去", kind: "traverse", target: "emily",
+          when: function (w) { return !!w.flags.emily_arrived && w.scene.npc.emily === "知情"; },
+          alwaysFlags: ["emily_in"] },
+        { id: "watch", label: "看怀表：离第七日还有多久", kind: "observe", target: "watch", special: "showClock" },
+        { id: "notes", label: "在门廊下最后整理一次线索", kind: "observe", target: "notebook", special: "openNotes" }
+      ],
+      exits: [{ to: "hall", label: "回屋里" },
+              /* 出口：提前离场（不走祭坛，直接结算） */
+              { to: "outside", label: "从后门离开，不再回这栋宅子",
+                when: function (w) { return !!w.flags.has_backpath || w.facts.indexOf("f_backdoor") >= 0; } }] },
+
+    outside: { name: "雨夜 · 后门", isFinal: true,
+      enter: "你从后门走进雨里，没有再回头。身后的宅子安静得像一只空壳——安静得让你确信，里面的事还没有结束。" }
+  };
+
+  /* ---------- 五、叙事素材库 ---------- */
+  var NARRATIVE = {
+    "observe|完全达成": "你几乎是一寸一寸地看过去，连灰尘落在哪一边都看得清楚。",
+    "observe|达成": "你定下心神，把它看了个仔细。",
+    "observe|部分达成": "你眯起眼，就着昏暗的光线勉强看清了一部分。",
+    "observe|未达成": "光线太暗，你什么也没看清。",
+    "observe|反效果": "你盯着看了太久，眼睛发花，一阵眩晕涌上来。",
+
+    "search|完全达成": "你翻得又准又稳，几乎没弄出任何声响。",
+    "search|达成": "你耐着性子，一层层翻找过去。",
+    "search|部分达成": "你翻得有些急躁，东西被弄乱了不少。",
+    "search|未达成": "你翻了一遍，什么也没找到。",
+    "search|反效果": "你失手打翻了整摞东西，声响在死寂里炸开。",
+
+    "social|完全达成": "你的声音很稳，一字一句都落在他心上。",
+    "social|达成": "你压低声音，试着唤他。",
+    "social|部分达成": "你喊了一声，声音却有些发抖。",
+    "social|未达成": "你的话像是落进了深水里，没有回音。",
+    "social|反效果": "你的声音惊动了他——他猛地转过头。",
+
+    "take|完全达成": "你的手法干净利落，几乎没惊动任何东西。",
+    "take|达成": "你看准时机，一把将它取了过来。",
+    "take|部分达成": "你勉强得手了，但过程不算漂亮。",
+    "take|未达成": "你的手扑了个空。",
+    "take|反效果": "你用力过猛，撞翻了旁边的东西。",
+
+    "destroy|完全达成": "你做得又快又彻底。",
+    "destroy|达成": "你抡起它，朝石面砸去。",
+    "destroy|部分达成": "你砸了几下，它却只是裂开一道缝。",
+    "destroy|未达成": "你举起它，手却在半空停住了。",
+    "destroy|反效果": "你砸了下去，绿光却顺着裂缝涌了出来。",
+
+    "intervene|完全达成": "你做得恰到好处，一切都顺着你的意思走。",
+    "intervene|达成": "你伸手介入，事情朝好的方向偏了一点。",
+    "intervene|部分达成": "你介入了，但效果有限。",
+    "intervene|未达成": "你没来得及做什么。",
+    "intervene|反效果": "你的干预让局面更糟了。",
+
+    /* 【修复 ②】traverse 是唯一没有旁白的意图：INTENTS 有 7 个，素材库只覆盖 6 个，
+     * 一旦哪个行动声明 kind:"traverse"，narrate() 会一路回退到 "……"。
+     * 补上这 5 条，通用句才真正凑齐 7 × 5 = 35 条。 */
+    "traverse|完全达成": "你几乎没发出声音，每一步都落在最不会响的那几块地板上。",
+    "traverse|达成": "你放轻脚步，一路走了过去。",
+    "traverse|部分达成": "你尽量放轻，地板还是在你身后响了两声。",
+    "traverse|未达成": "你刚一动，脚下的木地板就吱呀作响。",
+    "traverse|反效果": "你脚下踩空，木地板炸响，回音在空宅里荡开。",
+
+    "take|gate|完全达成": "锁舌无声地滑开。你侧身闪进去，连雨声都没被打断。",
+    "take|gate|达成": "锁舌在你手下滑开，你侧身闪了进去。",
+    "take|gate|部分达成": "锁开得不太顺利，铁门发出长长一声呻吟，你赶紧闪了进去。",
+    "take|gate|未达成": "锁纹丝不动。你退后一步，抬脚狠狠踹在门板上——木屑飞溅，门终于开了。那声闷响在雨夜里传得很远。",
+    "take|gate|反效果": "工具在锁孔里折断了。你只能用肩膀硬撞，撞了三下才把门撞开，动静大得连自己都吓了一跳。",
+    "take|amulet|完全达成": "你的手指稳稳扣住护符边沿，一把将它从祭坛上摘了下来。",
+    "take|amulet|达成": "你一个箭步上前，将护符从祭坛上抄起。",
+    "take|amulet|部分达成": "你的指尖擦过护符冰凉的边缘，好容易才把它攥住。",
+    "take|amulet|未达成": "你的手扑了个空——护符仍稳稳躺在祭坛中央。",
+    "take|amulet|反效果": "你扑向祭坛，却撞翻了烛台。火苗舔上桌布，黑暗里有什么动了一下。",
+    "destroy|amulet|完全达成": "你把护符摁在石地上，用祭坛的锐角狠狠砸了下去——它碎成了齑粉。",
+    "destroy|amulet|反效果": "你砸向祭坛，绿光暴涨，反而顺着裂缝涌了出来。",
+
+    /* 【修复 ①】special 专属旁白：同一个对象上可以挂着语义完全不同的同 kind 行动
+     *（祭坛室里「低声呼唤他」和「让他自己取下护符」都是 social + charles），
+     * 所以 special 的命中优先级高于 target。 */
+    "social|letHim|完全达成": "你叫他的名字，一遍又一遍。他终于站了起来，伸手取下祭坛上的护符，放进你手心。",
+    "social|letHim|达成": "他听懂了。犹豫片刻后，他伸手把护符从祭坛上取了下来，交给你。",
+    "social|letHim|部分达成": "他挣扎了很久，才抖着手把护符取下——指尖碰到它时，整个人晃了一下。"
+  };
+
+  /* special 的命中优先级最高：同一个对象上可能挂着语义完全不同的同 kind 行动
+   *（「低声呼唤他」vs「让他自己取下护符」都是 social + charles）。 */
+  function narrate(kind, target, achievement, special) {
+    return (special && NARRATIVE[kind + "|" + special + "|" + achievement])
+        || NARRATIVE[kind + "|" + target + "|" + achievement]
+        || NARRATIVE[kind + "|" + achievement]
+        || "……";
+  }
+
+  return { ITEMS: ITEMS, OBJECTS: OBJECTS, FACTS: FACTS, SCENES: SCENES, NARRATIVE: NARRATIVE, narrate: narrate };
+})();
+
+
+/* ============================================================
+ * 雾谷旧宅 · 敌方「计划状态机」 —— 可测试的纯逻辑模块
+ *
+ * 设计目标（对应讨论结论）：
+ *   - 敌方目标不是「杀玩家」，而是「推进自己的苏醒计划」
+ *   - 两条驱动源：自主时钟（慢性） + 事件触发（戏剧性）
+ *   - 玩家行为分两类：加速（无意放虎） / 打断（真正阻止）
+ *   - 三个输出维度：恐怖等级(terror) / 揭示进度(revelation) / 威胁等级(threat)
+ *     · terror 由 phase + threat 决定，永远落在该 phase 的区间内
+ *     · revelation 单调递增（信息只累积）
+ *     · threat 可升可降（可惊动、可平息）
+ *
+ * 该模块不依赖 DOM，可在 Node 与浏览器中运行。
+ * ============================================================ */
+var EnemyMachine = (function () {
+  "use strict";
+
+  /* ---------- 阶段表 ----------
+   * base/span 决定该阶段的恐怖区间 [base, base+span]
+   * clockLimit 为该阶段「自主时钟」的推进阈值（玩家无效行动累计到阈值即升级）
+   *
+   * 阈值按 v1.0 的 15 场景 × 34 回合流程重新校准：
+   *   低语 ≈ 前 9 回合（探索一层） ｜ 蠕动 ≈ 中段（二层） ｜ 逼近 ≈ 后段（地下）
+   *   「现身」只能由 enter_altar 事件触发，不由时钟推进 */
+  var PHASES = [
+    { id: 0, name: "沉睡", base: 0, span: 0, clockLimit: Infinity },
+    { id: 1, name: "低语", base: 1, span: 2, clockLimit: 12 },
+    { id: 2, name: "蠕动", base: 4, span: 2, clockLimit: 14 },
+    /* 「逼近 → 现身」不再由时钟推进：现身只由【进入祭坛室】这一个事件触发，
+       与设计记录一致（此前 clockLimit=18 让时钟也能推到现身，属于"刚好没露馅"）。 */
+    { id: 3, name: "逼近", base: 7, span: 1, clockLimit: Infinity },
+    { id: 4, name: "现身", base: 9, span: 1, clockLimit: Infinity }
+  ];
+
+  /* 第七日 = 敌方计划完成的时刻。
+   * 它不是第二个计数器，而是【同一个时钟的另一本账】—— totalClock 只随行动增减、
+   * 不被阶段重置清零。得知 f_ash / f_tally / f_blotter 只是让这个数显形。
+   * 数值由 pacing.js 校准：打全内容（75 回合，含「夺走护符」那次 +99 的加速）
+   * 总进度约 186，阈值取 215 留出约 10% 余量 ——
+   * 认真打完不会判负，反复回溯的玩家会被它追上。 */
+  var DAY7_CLOCK = 215;
+
+  var MAX_PHASE = PHASES.length - 1;
+
+  /* 恐怖值爬升速率：慢燃靠时钟（每步 ≤1），戏剧性拐点靠事件（每步 ≤2）
+   * 这是「无断崖」的关键 —— 单纯让阶段不跳级并不够，
+   * 阶段边界仍会让恐怖值一次性跳很多（例如 1 → 4）。 */
+  var TERROR_RATE_CLOCK = 1;
+  var TERROR_RATE_EVENT = 2;
+
+  /* ---------- 行动表 ----------
+   * clock    : 对自主时钟的贡献（负值 = 推迟）
+   * threat   : 对威胁等级的贡献（正=惊动，负=安抚）
+   * reveal   : 对揭示进度的贡献
+   * phaseJump: 直接跳到指定阶段（事件触发）
+   * terminal : 终结状态
+   *
+   * 注：不再有 exposure 字段。理智损耗只由「阶段跃升」驱动，
+   *     因为一句轻微的异象描写不该夺走理智 —— 详见 escalationSanLoss。
+   */
+  var ACTIONS = {
+    enter_house:    { clock: 1,  threat: 0,  reveal: 0,  phaseJump: 1, tag: "进入宅邸" },
+    investigate:    { clock: 1,  threat: 0,  reveal: 12, tag: "调查线索" },
+    move:           { clock: 1,  threat: 0,  reveal: 0,  tag: "移动" },
+    alarm:          { clock: 2,  threat: 3,  reveal: 0,  tag: "惊动宅邸" },
+    gaze_portrait:  { clock: 1,  threat: 1,  reveal: 4,  tag: "凝视画像" },
+    study_runes:    { clock: 1,  threat: 1,  reveal: 10, tag: "研究符文" },
+    take_amulet:    { clock: 99, threat: 4,  reveal: 6,  tag: "夺走护符（加速）" },
+    wake_charles:   { clock: -2, threat: -2, reveal: 8,  tag: "唤醒查尔斯（推迟）" },
+    destroy_amulet: { clock: 0,  threat: 0,  reveal: 20, terminal: "stopped", tag: "毁掉护符（终结）" },
+    enter_altar:    { clock: 0,  threat: 2,  reveal: 5,  phaseJump: 4, tag: "进入祭坛室" },
+    /* 时间的自主流逝：与玩家行为无关的自行推进 ——「房子自己在醒」 */
+    drift:          { clock: 1,  threat: 0,  reveal: 0,  tag: "自行推进" }
+  };
+
+  /* ---------- 异常现象库（按阶段分层） ---------- */
+  var ANOMALIES = {
+    0: ["宅子里静得反常，只有雨点敲在铁门上的声音。"],
+    1: [
+      "镜中你的倒影，似乎比你的动作慢了半拍。",
+      "不知从哪传来一阵极轻的、湿漉漉的刮擦声。",
+      "你呼出的白气在屋里久久不散——这里比外面还冷。"
+    ],
+    2: [
+      "那张空摇椅在穿堂风里，自己一下一下地晃着。",
+      "地上翻倒的铁锅，无声地转了小半圈。",
+      "墙后传来指爪划过石面的声音，一下，又一下。",
+      "长桌上的汤匙，自己滑到了桌沿。"
+    ],
+    3: [
+      "你呼出的气凝成白雾——这里的冷，不属于这个季节。",
+      "身后的木地板响了一声。你回头，那里空无一人。",
+      "墙上的霉斑，似乎拼成了某个你看不懂的图案。",
+      "烛火齐齐矮了一截，像有什么从旁边走过。"
+    ],
+    4: [
+      "烛火齐齐熄灭，黑暗中，有什么正缓缓站起身。"
+    ]
+  };
+
+  /* ---------- 工具 ---------- */
+  function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+  /* 可复现随机数（mulberry32） */
+  function makeRng(seed) {
+    var a = (seed >>> 0) || 1;
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  /* 该阶段在当前(时钟进度, 威胁)下的恐怖目标值 */
+  function terrorTarget(phase, clock, threat) {
+    var p = PHASES[phase];
+    var progress = p.clockLimit === Infinity ? 0 : Math.min(1, clock / p.clockLimit);
+    return p.base + Math.round(p.span * Math.max(progress, threat / 10));
+  }
+
+  /* 恐怖等级的静态参考值（仅由阶段与威胁决定，用于区间校验） */
+  function terrorOf(phase, threat) {
+    var p = PHASES[phase];
+    return p.base + Math.round(p.span * (threat / 10));
+  }
+
+  /* 状态化推进：
+   *   - 慢燃（时钟驱动）：每步最多 +1，杜绝前几幕的断崖
+   *   - 拐点（事件驱动）：允许直接跳到该阶段下界（高潮必须落地），但不超过上限
+   *   - 全程单调不减、且不越当前阶段区间上限 */
+  function advanceTerror(prevTerror, phase, clock, threat, isEvent) {
+    var p = PHASES[phase];
+    var bandMax = p.base + p.span;
+    var target = terrorTarget(phase, clock, threat);
+    if (isEvent) {
+      var snapped = Math.min(Math.max(target, p.base), bandMax);
+      return Math.max(prevTerror, snapped);
+    }
+    var next = Math.min(target, prevTerror + TERROR_RATE_CLOCK);
+    return Math.max(prevTerror, Math.min(next, bandMax));
+  }
+
+  /* 阶段区间（供测试断言） */
+  function terrorBand(phase) {
+    var p = PHASES[phase];
+    return [p.base, p.base + p.span];
+  }
+
+  /* 阶段跃升时的旁白 —— 这才是「见识到了不该见识的」的时刻 */
+  var ESCALATION = {
+    2: "宅子深处，有什么东西改变了呼吸的节奏。",
+    3: "整栋房子忽然安静下来——那种安静，像是有东西正屏息注视着你。",
+    4: "某个庞大的存在，终于把注意力完全转向了你。"
+  };
+
+  /* San 损耗只发生在「阶段跃升」的那一步。
+   * 理由：轻微的异象描写（一声刮擦、一丝冷意）不该夺走理智；
+   *       真正让人崩溃的是「它明显比刚才更近了」这个认知跳跃。 */
+  function escalationSanLoss(phase, rng) {
+    if (phase <= 1) return 0;
+    if (phase === 2) return 1;
+    if (phase === 3) return 1;
+    return 1 + Math.floor(rng() * 3); // 现身：1d3
+  }
+
+  /* ---------- 状态机 ---------- */
+  function create(opts) {
+    opts = opts || {};
+    var san = opts.san != null ? opts.san : 55;
+    return {
+      phase: 0,
+      clock: 0,
+      totalClock: 0,     /* 第七日专用：只随行动累加，不被阶段重置清零 */
+      threat: 0,
+      terror: 0,
+      revelation: 0,
+      san: san,
+      sanStart: san,
+      sanLost: 0,
+      quietStreak: 0,
+      terminal: null,
+      seed: opts.seed || 1,
+      history: []
+    };
+  }
+
+  /**
+   * 推进一步。
+   * @param {object} st   状态（会被就地更新）
+   * @param {string} actionId 行动 id
+   * @param {function} rng 随机源（可选，默认用 state.seed 初始化）
+   */
+  function step(st, actionId, rng) {
+    if (!rng) rng = makeRng(st.seed + st.history.length + 1);
+
+    // 已终结：冻结一切
+    if (st.terminal) {
+      var frozen = {
+        action: actionId, phase: st.phase, phaseName: PHASES[st.phase].name,
+        terror: st.terror, threat: st.threat,
+        revelation: st.revelation, sanLoss: 0, san: st.san,
+        anomaly: "（一切已归于沉寂。）", terminal: st.terminal, frozen: true
+      };
+      st.history.push(frozen);
+      return frozen;
+    }
+
+    var A = ACTIONS[actionId];
+    if (!A) throw new Error("未知行动: " + actionId);
+
+    var prevPhase = st.phase;
+
+    // ① 自主时钟（阶段推进用）+ 总进度（第七日用）
+    //    ⚠ 阶段时钟会被事件（enter_altar）重置为 0，所以第七日不能读它 ——
+    //      否则倒计时会在进祭坛室时往回跳。总进度是另一本只随行动增减的账。
+    if (A.clock) {
+      var clockBefore = st.clock;
+      st.clock = Math.max(0, st.clock + A.clock);
+      st.totalClock += st.clock - clockBefore;
+    }
+
+    // ② 威胁等级（升 / 降）
+    if (A.threat !== 0) {
+      st.threat = clamp(st.threat + A.threat, 0, 10);
+      st.quietStreak = 0;
+    } else {
+      st.quietStreak++;
+      if (st.quietStreak >= 2) {
+        st.threat = clamp(st.threat - 1, 0, 10);
+        st.quietStreak = 0;
+      }
+    }
+
+    // ③ 阶段推进（事件跳转优先；否则按时钟，单步最多 +1 阶段）
+    var isEvent = A.phaseJump != null;
+    if (isEvent) {
+      st.phase = Math.max(st.phase, Math.min(A.phaseJump, MAX_PHASE));
+      st.clock = 0;
+    } else if (st.phase < MAX_PHASE) {
+      if (st.clock >= PHASES[st.phase].clockLimit) {
+        st.phase++;
+        st.clock = 0;
+      }
+    }
+
+    // ④ 恐怖值爬升（状态化 + 限速，杜绝断崖）
+    st.terror = advanceTerror(st.terror, st.phase, st.clock, st.threat, isEvent);
+
+    // ⑤ 揭示进度（单调递增）
+    if (A.reveal) st.revelation = clamp(st.revelation + A.reveal, 0, 100);
+
+    // ⑥ 终结判定
+    if (A.terminal) st.terminal = A.terminal;
+
+    // ⑦ 阶段跃升判定
+    var escalated = st.phase > prevPhase;
+
+    // ⑧ San 损耗 —— 只在「跃升」那一步结算。
+    //    轻微的异象描写不夺走理智；事件跃升（进祭坛室）的冲击由剧本 enterSan 负责。
+    var terror = st.terror;
+    var loss = (escalated && !isEvent) ? escalationSanLoss(st.phase, rng) : 0;
+    st.san = Math.max(0, st.san - loss);
+    st.sanLost += loss;
+
+    // ⑨ 环境异象（按阶段抽取，纯氛围，不扣理智）
+    var pool = ANOMALIES[st.phase] || ["……"];
+    var anomaly = pool[Math.floor(rng() * pool.length) % pool.length];
+
+    var out = {
+      action: actionId, actionTag: A.tag,
+      phase: st.phase, phaseName: PHASES[st.phase].name,
+      terror: terror, threat: st.threat,
+      revelation: st.revelation,
+      totalClock: st.totalClock,
+      escalated: escalated,
+      escalationText: escalated ? (ESCALATION[st.phase] || null) : null,
+      sanLoss: loss, san: st.san,
+      anomaly: anomaly, terminal: st.terminal, frozen: false
+    };
+    st.history.push(out);
+    return out;
+  }
+
+  /** 按序列跑一遍，返回 {state, trace} */
+  function run(actions, opts) {
+    var st = create(opts);
+    var rng = makeRng(st.seed);
+    var trace = actions.map(function (a) { return step(st, a, rng); });
+    return { state: st, trace: trace };
+  }
+
+  return {
+    PHASES: PHASES, ACTIONS: ACTIONS, ANOMALIES: ANOMALIES, ESCALATION: ESCALATION,
+    MAX_PHASE: MAX_PHASE,
+    DAY7_CLOCK: DAY7_CLOCK,
+    TERROR_RATE_CLOCK: TERROR_RATE_CLOCK,
+    terrorOf: terrorOf, terrorTarget: terrorTarget,
+    advanceTerror: advanceTerror, escalationSanLoss: escalationSanLoss,
+    terrorBand: terrorBand,
+    makeRng: makeRng, create: create, step: step, run: run
+  };
+})();
+
+
+/* ============================================================
+ * 游戏逻辑
+ * ============================================================ */
+const VERSION = "1.1.0";
+/* 调试开关：设为 true 会在检定行里显示达成分/方式修正/难度等内部数值 */
+const DEBUG_ROLL = false;
+
+/* 时间的自主流逝速率：平均每 1/RATE 个回合，敌方时钟自行 +1
+ * 「房子自己在醒」，与玩家是否行动无关 —— 制造「寂静中突然一声抓挠」 */
+const DRIFT_RATE = 0.28;
+const CHANGELOG = [{
+  version: "1.1.0", date: "2026-11-26", title: "剧本扩张：从 5 分钟到 12 分钟",
+  highlights: [
+    "两条角色序幕：侦探从侦探所出发（受雇查失踪），医生从自己家中出发（查尔斯是他的病人）。动机不同、开场白不同，各带一次新手检定 —— 掷差也保底推进，绝不把新人卡在第一步。",
+    "场景 15 → 24，行动 29 → 82：新增侦探所、医生家中、婴儿房、客房、仆人房、酒窖、储肉间、雨中的门廊、后门雨夜；二层从 0.75 个行动/房间补到 3+。",
+    "知识 23 → 35，且每条知识都有出口 —— 出口率 0% → 89%。查到什么就能做什么：凭墙后暗门的方位免钥匙开暗门、按拉丁文半途打断仪式、用族谱真相唤醒查尔斯、让妹妹看一眼护符换一个结局。",
+    "结局 6 → 9：新增「第七日」「送回温特家」「兄妹重逢」；「黎明破晓」与「逃出生天」还各有一条只有读到关键知识才出现的差分。",
+    "第七日倒计时：不是另开一个计数器，而是敌方时钟的另一本账（totalClock，不会被阶段跃升清零）。摇过铃、或知道「第七日」之后，状态条开始显示还剩约多少回合；磨蹭到点，仪式就完成了。",
+    "妹妹艾米莉到场、可交涉：她的状态独立于查尔斯（门外 → 焦急 → 知情 / 崩溃）。",
+    "两条死条目复活：「凝视画像」与「研究符文」此前定义了却从未被调用 —— 现在看清不该看清的东西会推快计划。",
+    "「现身」回到只有进入祭坛室才触发（此前时钟也能推到它，属于刚好没露馅）。",
+    "舍弃「从后门离开」的玩家会走进另一个终局 —— 不是新结局，而是提前结算。"
+  ],
+  fixes: [
+    "修复第七日倒计时会往回涨：它原本读阶段时钟，而 enter_altar 会把阶段时钟清零。",
+    "修复「凝视画像 / 研究符文」两条死条目（敌方行动表里定义、引用 0 次）。",
+    "修复「现身」可被时钟推到的偏差（与设计记录的描述不一致）。"
+  ]
+}, {
+  version: "1.0.4", date: "2026-11-26", title: "移动端手感",
+  highlights: [
+    "调查笔记的关闭键只留一个 ✕（原来是「关闭 ✕」），触控区仍保持 44×44。",
+    "触控目标统一到 ≥44px：右上角「线索」、笔记标题栏、调查员抽屉开关、移动按钮。",
+    "按钮补上明确的「按下」反馈 —— 触屏没有 hover，原来的 :hover 高亮会在点完后粘住，看着像「已选中」。",
+    "技能与异象强度的说明改为「点击就地展开」：原来靠 hover / :active 浮动提示，iOS 上不保证触发，浮层还会被抽屉裁掉。",
+    "「重新开始」需要再点一次确认（3 秒内有效），避免贴着行动列表误触清空整局。",
+    "去掉双击缩放的 300ms 判定（touch-action: manipulation）。"
+  ]
+}, {
+  version: "1.0.3", date: "2026-11-26", title: "调查笔记",
+  highlights: [
+    "标题栏右上角新增「线索 N」常驻入口：点开是调查笔记，列出全部已知情报（判定修正）与持有物。",
+    "此前已知情报只躺在折叠的角色卡里 —— 玩家查到了什么，得先展开抽屉才知道。",
+    "新线索入账时角标闪一下；点面板外任意处收起；重开一局笔记自动清空。",
+    "「怎么玩」的知识一条补上「右上角『线索』随时回看」。"
+  ]
+}, {
+  version: "1.0.2", date: "2026-11-26", title: "竖屏 App 形态",
+  highlights: [
+    "整个游戏改成【竖屏 App 形态】：永远是一列手机比例的画面。宽屏（桌面 / 平板）自动居中成一格「手机框」，两侧留黑。",
+    "删掉原来的三栏桌面布局与 980px / 820px 两个断点 —— 只剩一种布局，不再维护两套。",
+    "一屏不滚页：剧情区填满剩余高度、内部滚动；行动区固定在画面最下方的拇指区（最高 34dvh）。",
+    "适配刘海与 Home 条：body、弹窗、底部抽屉都吃 env(safe-area-inset-*)，不支持 env 的内核自动退化为 0。",
+    "角色卡默认折叠成一条，展开时以底部抽屉浮层出现（原移动端行为提升为唯一行为）；弹窗不再越出竖屏画布。",
+    "手机横屏时提示「请竖屏使用」：只对「触屏 + 矮窗口」生效，桌面把窗口拉宽不会命中。"
+  ],
+  fixes: [
+    "修复桌面宽窗口下角色卡点不开（原先靠 matchMedia 判断 ≤820px 才允许展开，宽屏点了没反应）。",
+    "修复 960px 左右宽度下三栏塌成单列、行动区被顶到屏幕外要滚动才能点的老问题。"
+  ]
+}, {
+  version: "1.0.1", date: "2026-11-26", title: "三处修复回灌",
+  highlights: [
+    "特殊行动 special 真正生效：清醒的查尔斯可以亲手取下护符交给你 —— 此前这条分支只声明、引擎从不读取，等于点了一次普通交涉。",
+    "自己夺护符是 clock+99 / threat+4 的自杀式动作；「先唤醒他、再让他动手」由此成为通往最佳结局「黎明破晓」的安全正路。",
+    "补齐 traverse（移动）五档旁白：7 个意图 × 5 档通用句首次齐全，不再一路回退成「……」。",
+    "新增 10 项回归测试（test.js L 组），完整对局模拟改为名副其实的「谨慎路线」。"
+  ],
+  fixes: [
+    "修复「可拾取」对象把对象 id 当成道具 id 塞进背包：客厅翻壁炉成功后，背包里混入 hearth，界面读道具表时崩溃、行动链当场断掉。",
+    "界面背包渲染加兜底：今后内容写错 id 只会显示「（未知道具）」，不再让整局死在一次渲染上。",
+    "修复同一个对象上同 kind 行动共用旁白的问题（special 专属旁白优先于 target）。"
+  ]
+}, {
+  version: "1.0", date: "2026-11-25", title: "判定引擎重构",
+  highlights: [
+    "行动不再「查表」，改由 resolve(意图, 掷骰, 世界) 合成：达成度 / 代价 / 揭示 三个维度独立判定。",
+    "知识成为判定修正项，且分「方式」（提升达成）与「护佑」（削减代价）两类。",
+    "NPC 状态由规则推导：交涉按达成度分级迁移（达成→清醒 / 部分→动摇 / 大失败→敌意）。",
+    "「未达成」时场景维持原状 —— 失败不再莫名推进剧情。",
+    "揭示是累积的：深挖不会丢失浅层发现。",
+    "移动独立于选项系统：行动列只放真正的意图，出口单独成排。",
+    "新增道具门槛与道具获取（旧钥匙 / 撬棍 / 护符）。"
+  ],
+  fixes: [
+    "修复「失败也让 NPC 完全清醒」的一致性缺陷。",
+    "修复「普通成功只算部分达成」的偏严基线。",
+    "修复普通成功也扣血、失败必扣 2 HP 的代价过重问题。"
+  ]
+}];
+
+const CHAR_DESC = {
+  "侦查": "发现隐藏的细节、线索与违和之处。",
+  "聆听": "察觉细微的声音与暗处的响动。",
+  "图书馆使用": "快速查阅书籍、档案与文字资料。",
+  "心理学": "判断他人的情绪、意图，或唤回一个人的神智。",
+  "说服": "用言语劝说、交涉、套取信息。",
+  "潜行": "悄悄移动、不被察觉地接近目标。",
+  "躲闪": "敏捷地闪避、翻滚与借势。",
+  "神秘学": "对超自然、古老符号与邪神相关的知识。",
+  "力量": "体力与蛮力，用于撬、砸、搬。",
+  "敏捷": "身手与灵活。"
+};
+
+const CHARACTERS = {
+  detective: { key: "detective", name: "伊芙琳·格蕾", job: "私家侦探",
+    /* v1.1.0：角色各自有起点场景与开场白 —— 动机不同，路也不同 */
+    start: "office",
+    open: ["1927 年秋，新英格兰，阿卡姆镇。雨已经下了一整夜。",
+      "艾米莉·温特坐在你对面，眼眶红肿：「求你了——我哥哥查尔斯失踪三天了。警察说他是自己走的，可他没有带行李。」",
+      "你接下这桩委托。报酬不高，但她在信末写的那句「别一个人去」，让你在意。"],
+    skills: { 侦查: 70, 聆听: 55, 图书馆使用: 45, 心理学: 45, 说服: 50, 潜行: 50, 躲闪: 32, 神秘学: 15, 力量: 50, 敏捷: 65 },
+    hpBase: 11,
+    blurb: ["善于观察与套话", "身手敏捷，行动果决", "对超自然之事半信半疑"] },
+  doctor: { key: "doctor", name: "塞缪尔·哈特", job: "医师",
+    start: "clinic",
+    open: ["1927 年秋，新英格兰，阿卡姆镇。雨已经下了一整夜。",
+      "查尔斯·温特是你的病人。两个月前他来过，说睡不着、听见墙里有声音——你建议他转精神科，他没有去。",
+      "今晚他妹妹艾米莉上门：「他失踪三天了。我只求你……至少把他找回来，活的行，死的也行。」"],
+    skills: { 侦查: 45, 聆听: 45, 图书馆使用: 60, 心理学: 50, 说服: 55, 潜行: 25, 躲闪: 25, 神秘学: 25, 力量: 45, 敏捷: 50 },
+    hpBase: 12,
+    blurb: ["冷静理性，见惯生死", "学识渊博，擅长研究", "对怪力乱神持怀疑态度"] }
+};
+
+let G = null;
+let runId = 0;
+let pendingAct = null;
+
+function el(id) { return document.getElementById(id); }
+function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+function initGame(key) {
+  const c = CHARACTERS[key];
+  const seed = Math.floor(Math.random() * 1e9);
+  const em = EnemyMachine.create({ san: 58, seed: seed });
+  /* 初始为「沉睡 / 强度 0」—— 还站在门外的雨里，宅子里什么都不会发生。
+   * 真正的低语从【进入宅邸】那一刻开始（enter_house 事件）。 */
+  G = {
+    char: c,
+    hp: c.hpBase, hpMax: c.hpBase, san: 58, sanMax: 58,
+    skills: Object.assign({}, c.skills),
+    facts: [], items: [], flags: {}, revealed: {}, attempted: {}, seenAnomalies: {}, drift: 0,
+    /* 起始场景由角色决定（序幕各写各的，见 CHARACTERS[key].start） */
+    sceneId: c.start || "gate", npc: { charles: "沉浸", emily: null },
+    visited: [],
+    em: em, rng: EnemyMachine.makeRng(seed),
+    run: ++runId, ended: null, busy: false, notesShown: false, outcome: null
+  };
+}
+
+/* 世界快照：交给 resolve 判定 */
+function world() {
+  return { actor: { hp: G.hp, hpMax: G.hpMax, san: G.san, sanMax: G.sanMax, skills: G.skills },
+    facts: G.facts, items: G.items, flags: G.flags,
+    scene: { id: G.sceneId, npc: G.npc }, enemy: { terror: G.em.terror, threat: G.em.threat } };
+}
+
+/* ---------- 行动列表（由状态推导） ---------- */
+
+/* 行动是一次性的：尝试过就消失（无论成败）。
+ * 一次翻找定结果 —— 找不到就是找不到，找到后也不会再留在列表里。 */
+function actDone(a) {
+  if (a.id && G.attempted[G.sceneId + ":" + a.id]) return true;
+  // 该物品已在手（防止重复获取）
+  if (G.items.indexOf(a.target) >= 0) return true;
+  return false;
+}
+
+function availableActs() {
+  const s = SCN(G.sceneId);
+  const w = world();
+  return (s.acts || []).filter((a) => {
+    if (a.when && !a.when(w)) return false;
+    if (a.requires && a.requires.items) {
+      if (!a.requires.items.some((i) => G.items.indexOf(i) >= 0)) return false;
+    }
+    if (actDone(a)) return false;
+    return true;
+  });
+}
+function availableExits() {
+  const s = SCN(G.sceneId);
+  const w = world();
+  return (s.exits || []).filter((x) => !x.when || x.when(w));
+}
+function SCN(id) { return Content.SCENES[id]; }
+
+/* ---------- 右上角「调查笔记」（v1.0.3） ----------
+ * 玩家此前只能在折叠的角色卡里看到已获线索：查到了什么，得先展开抽屉。
+ * 这里给一个常驻入口：角标显示条数，点开随时回看；新线索到手时角标闪一下。 */
+let lastClueCount = 0;
+
+/* 第一条线索入手时是否自动翻开笔记（默认开；studio 侧可用 rules.notesAutoOpen 关掉） */
+function notesAutoOpen() {
+  const r = (window.GAME && window.GAME.rules) || {};
+  return r.notesAutoOpen !== false;
+}
+
+function renderClues() {
+  const n = G ? G.facts.length : 0;
+  const firstClue = n > lastClueCount && lastClueCount === 0 && n > 0;
+  const cnt = el("clue-count");
+  if (cnt) {
+    cnt.textContent = n;
+    /* 只在真的增加时闪（首次渲染、重开一局都不闪） */
+    if (n > lastClueCount) {
+      const btn = el("clue-btn");
+      if (btn) {
+        btn.classList.remove("pulse");
+        void btn.offsetWidth;          /* 强制重排，让动画能重放 */
+        btn.classList.add("pulse");
+      }
+    }
+  }
+  lastClueCount = n;
+
+  const box = el("clue-panel-body");
+  if (!box) return;
+  const facts = (G && G.facts.length)
+    ? G.facts.map((f, i) => {
+        const F = Content.FACTS[f] || { label: "情报", text: f };
+        return `<div class="clue-item"><div class="clue-k">线索 ${i + 1} · ${F.label || "情报"}</div>`
+             + `<div class="clue-t">${F.text}</div></div>`;
+      }).join("")
+    : '<div class="empty-hint">（还没有查到任何线索。调查房间、翻找东西、与人交谈，都会记进这本笔记。）</div>';
+  const items = (G && G.items.length)
+    ? G.items.map((i) => { const it = Content.ITEMS[i] || { name: String(i), desc: "（未知道具）" }; return `<div class="clue-card">${it.name} —— ${it.desc}</div>`; }).join("")
+    : '<div class="empty-hint">（空手）</div>';
+  box.innerHTML = `<div class="clue-sec">已知情报 ${n} 条 · 判定修正</div>` + facts
+    + `<div class="clue-sec">持有物</div>` + items;
+
+  /* 第一条线索入手时自动翻开一次 —— 让玩家知道「线索记在这里」；
+     之后只闪角标，不再打扰。 */
+  if (firstClue && G && !G.notesShown && notesAutoOpen()) {
+    G.notesShown = true;
+    openClues();
+  }
+}
+
+function openClues() {
+  renderClues();
+  el("clue-panel").style.display = "block";
+  el("clue-btn").classList.add("on");
+}
+function closeClues() {
+  el("clue-panel").style.display = "none";
+  el("clue-btn").classList.remove("on");
+}
+function toggleClues() {
+  if (el("clue-panel").style.display === "block") closeClues(); else openClues();
+}
+
+/* ---------- 点一下就地展开说明（技能 / 异象强度） ----------
+ * 触摸端没有 hover；iOS 上 :active 对非链接元素也不保证触发，
+ * 所以说明改成「点击展开、正文插在该行下方」，同时只留一条展开项，
+ * 免得抽屉被十条说明撑爆。 */
+function bindTipToggles() {
+  const box = el("char-body");
+  if (!box || !box.addEventListener) return;
+  box.addEventListener("click", function (ev) {
+    const t = ev.target;
+    const host = t && t.closest ? t.closest("[data-tip-body]") : null;
+    if (!host) return;
+    const next = host.nextElementSibling;
+    if (next && next.className === "tip-body") { next.parentNode.removeChild(next); return; }
+    const open = box.querySelector(".tip-body");
+    if (open && open.parentNode) open.parentNode.removeChild(open);
+    const d = document.createElement("div");
+    d.className = "tip-body";
+    d.textContent = host.getAttribute("data-tip-body") || "";
+    host.parentNode.insertBefore(d, host.nextSibling);
+  });
+}
+
+/* ---------- 渲染 ---------- */
+function render() {
+  const c = G.char;
+  const bar = (v, m) => {
+    const pct = clamp(Math.round(v / m * 100), 0, 100);
+    let col = "var(--green)";
+    if (pct <= 30) col = "var(--red-bright)"; else if (pct <= 55) col = "#c9a050";
+    return `<div class="bar"><div class="bar-fill" style="width:${pct}%;background:${col};"></div></div>`;
+  };
+  const skills = Object.keys(c.skills).map((k) =>
+    `<div class="skill-row" data-tip-body="${CHAR_DESC[k] || ""}"><span class="sk">${k}</span><span class="sv">${G.skills[k]}</span></div>`).join("");
+  const facts = G.facts.length
+    ? G.facts.map((f) => `<div class="clue-card">${Content.FACTS[f].text}</div>`).join("")
+    : '<div class="empty-hint">（什么都没查出来）</div>';
+  const items = G.items.length
+    /* 【修复 ③】兜底：内容层写错 id 时显示「未知道具」，而不是整局崩在渲染上 */
+    ? G.items.map((i) => { const it = Content.ITEMS[i] || { name: String(i), desc: "（未知道具）" }; return `<div class="clue-card">${it.name} —— ${it.desc}</div>`; }).join("")
+    : '<div class="empty-hint">（空手）</div>';
+  const ph = EnemyMachine.PHASES[G.em.phase];
+  const tcol = G.em.terror >= 7 ? "var(--red-bright)" : (G.em.terror >= 4 ? "#c9a050" : "#6b6252");
+
+  el("char-body").innerHTML = `
+    <div class="char-name">${c.name}</div>
+    <div class="char-job">${c.job}</div>
+    <div class="stat-bars">
+      <div class="bar-row"><div class="bar-label"><span>生命 HP</span><b>${G.hp} / ${G.hpMax}</b></div>${bar(G.hp, G.hpMax)}</div>
+      <div class="bar-row"><div class="bar-label"><span>理智 SAN</span><b>${G.san} / ${G.sanMax}</b></div>${bar(G.san, G.sanMax)}</div>
+      <div class="bar-row" data-tip-body="宅中未知力量的活跃程度。随你惊动宅邸与时间流逝上升；异象与理智侵蚀由它驱动。"><div class="bar-label"><span>异象强度 · ${ph.name}</span><b>${G.em.terror} / 10</b></div>${bar(G.em.terror, 10)}</div>
+    </div>
+    <div class="skills"><div class="panel-head" style="border:none;padding:0 0 8px;">技能（点击查看说明）</div>${skills}</div>
+    <div style="margin-top:14px;border-top:1px dashed var(--line);padding-top:10px;">
+      <div class="panel-head" style="border:none;padding:0 0 8px;color:var(--gold-dim);">已知情报（判定修正）</div>${facts}
+    </div>
+    <div style="margin-top:12px;border-top:1px dashed var(--line);padding-top:10px;">
+      <div class="panel-head" style="border:none;padding:0 0 8px;color:var(--gold-dim);">持有物</div>${items}
+    </div>`;
+
+  /* 移动端常驻状态条 */
+  const ms = el("mini-status");
+  if (ms) {
+    /* 第七日不是第二个计数器 —— 它就是敌方时钟的余量（单一真相源）。
+       得知 f_ash / f_blotter / f_tally 之后，这个数才显形。 */
+    const known7 = G.facts.indexOf("f_ash") >= 0 || G.facts.indexOf("f_blotter") >= 0 || G.facts.indexOf("f_tally") >= 0;
+    const left7 = Math.max(0, (EnemyMachine.DAY7_CLOCK || 215) - (G.em.totalClock || 0));
+    /* 显示成「还剩约几回合」：总进度每回合约走 2.5 点（含惊动与漂移），
+       所以这里换算一下 —— 直接显示点数玩家没有尺度感。 */
+    const turns7 = Math.max(0, Math.round(left7 / 2.5));
+    ms.innerHTML = `HP <b>${G.hp}</b> · SAN <b>${G.san}</b> · 异象 <b>${G.em.terror}</b>`
+      + (known7 ? ` · 第七日约 <b>${turns7}</b> 回合` : "");
+  }
+  renderClues();
+  renderAction();
+}
+
+function renderAction() {
+  const box = el("action");
+  box.innerHTML = "";
+  const s = SCN(G.sceneId);
+
+  if (G.ended) {
+    box.innerHTML = `<div class="pick-title">—— 调查结束 ——</div><div class="hint">${G.ended}</div>`;
+    return;
+  }
+
+  const title = document.createElement("div");
+  title.className = "pick-title";
+  title.textContent = "当前：" + s.name;
+  box.appendChild(title);
+
+  const acts = availableActs();
+  const exits = availableExits();
+
+  if (!acts.length && !exits.length && !s.isFinal) {
+    const h = document.createElement("div");
+    h.className = "hint";
+    h.textContent = "这里没什么可做的了。";
+    box.appendChild(h);
+  }
+
+  /* 行动与移动统一成一个列表 */
+  acts.forEach((a) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.textContent = a.label;
+    btn.title = a.requires && a.requires.items ? a.fallback : "";
+    btn.onclick = () => doAct(a);
+    box.appendChild(btn);
+  });
+  exits.forEach((x) => {
+    const btn = document.createElement("button");
+    btn.className = "choice move";
+    btn.textContent = x.label;
+    btn.onclick = () => moveTo(x.to);
+    box.appendChild(btn);
+  });
+}
+
+/* ---------- 日志 ---------- */
+function log(tag, text) {
+  const box = el("log");
+  const div = document.createElement("div");
+  div.className = "entry";
+  const t = document.createElement("span");
+  t.className = "tag " + tag;
+  t.textContent = { kp: "守秘人", player: "调查员", clue: "线索", roll: "检定", sys: "系统", om: "异象" }[tag] || tag;
+  const p = document.createElement("p");
+  p.innerHTML = text;
+  div.appendChild(t); div.appendChild(p);
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+/* ---------- 异象展示策略 ----------
+ * 异象是【强度的表达】，不是每次行动的伴奏：
+ *   · 强度上升 / 阶段跃升 → 必定展示（世界确实变了）
+ *   · 强度不变           → 约 1/4 概率展示（保留氛围，但不至于让玩家脱敏）
+ *   · 展示时优先挑选尚未出现过的异象，用尽后才允许重复
+ */
+function pickAnomaly(phase) {
+  const pool = EnemyMachine.ANOMALIES[phase] || [];
+  if (!pool.length) return "……";
+  const unseen = pool.filter((a) => !G.seenAnomalies[a]);
+  const list = unseen.length ? unseen : pool;
+  const a = list[Math.floor(Math.random() * list.length)];
+  G.seenAnomalies[a] = (G.seenAnomalies[a] || 0) + 1;
+  return a;
+}
+
+function maybeShowAnomaly(out, prevTerror) {
+  if (!out) return;
+  const isEvent = EnemyMachine.ACTIONS[out.action] && EnemyMachine.ACTIONS[out.action].phaseJump != null;
+  const escalated = out.escalated && !isEvent;
+  const rose = out.terror > prevTerror;
+
+  /* 理智损耗【始终】结算，与是否展示异象无关 */
+  if (out.sanLoss > 0) {
+    G.san = Math.max(0, G.san - out.sanLoss);
+    log("sys", escalated
+      ? `理智下降 <b>${out.sanLoss}</b> 点 —— 它比刚才更近了（当前 San ${G.san}）。`
+      : `理智下降 <b>${out.sanLoss}</b> 点（当前 San ${G.san}）。`);
+  }
+
+  /* 以下只决定「是否展示异象」 */
+  if (out.terror <= 0) return;
+  if (!rose && !escalated && Math.random() >= 0.25) return;
+
+  log("om", '<i style="color:#93a6c2;">——就在此刻：' + pickAnomaly(out.phase) + '</i>');
+  if (escalated && out.escalationText) log("om", '<i style="color:#c0a3a3;">' + out.escalationText + '</i>');
+}
+
+/* ---------- 时间的自主流逝 ----------
+ * 每回合累积一点「时间」，累积满 1 就让敌方时钟自行推进一步。
+ * 这与玩家做了什么无关 —— 静坐不动，它也会继续醒。 */
+function advanceTime() {
+  if (G.ended || G.em.terminal) return;
+  G.drift = (G.drift || 0) + DRIFT_RATE;
+  while (G.drift >= 1) {
+    G.drift -= 1;
+    const prevTerror = G.em.terror;
+    const out = EnemyMachine.step(G.em, "drift", G.rng);
+    maybeShowAnomaly(out, prevTerror);
+  }
+}
+
+/* ---------- 敌方回合 ---------- */
+function enemyTurn(act, r) {
+  const map = { observe: "investigate", search: "investigate", social: "wake_charles", traverse: "move" };
+  let a = map[act.kind] || "move";
+  /* 认知行为另有分量：凝视画像 / 研究符文在敌方行动表里躺了很久却从未被调用。
+     看清了不该看清的东西，计划会被推快一点。 */
+  if (act.kind === "observe" && act.target === "portrait") a = "gaze_portrait";
+  if (act.kind === "observe" && act.target === "runes") a = "study_runes";
+  if (act.kind === "take") a = (Content.OBJECTS[act.target].tags || []).indexOf("枢纽") >= 0 ? "take_amulet" : "move";
+  if (act.kind === "destroy") a = "destroy_amulet";
+  if (act.kind === "social" && (r.tierRaw === "fumble" || G.npc.charles === "敌意")) a = "alarm";
+  const prevTerror = G.em.terror;
+  const out = EnemyMachine.step(G.em, a, G.rng);
+  maybeShowAnomaly(out, prevTerror);
+  return out;
+}
+
+/* ---------- 执行行动 ---------- */
+function doAct(act) {
+  if (G.busy) return;
+  G.busy = true;
+  closeClues();            /* 已经决定要做什么了，笔记不用继续占着屏幕 */
+  /* 行动一次性：立刻登记，无论结果如何都不再出现在列表里 */
+  G.attempted[G.sceneId + ":" + act.id] = true;
+  log("player", act.label);
+
+  /* special：门廊那两件小事不走判定（看怀表 / 整理线索），但同样消耗一个回合 */
+  if (act.special === "showClock") {
+    const left7 = Math.max(0, (EnemyMachine.DAY7_CLOCK || 215) - (G.em.totalClock || 0));
+    log("sys", `怀表的玻璃上全是水汽。按你数出来的吟诵节奏推算：离第七日还有约 <b>${Math.round(left7 / 2.5)}</b> 个回合。`);
+    advanceTime();
+    G.busy = false; render(); return;
+  }
+  if (act.special === "openNotes") {
+    log("sys", "你把笔记摊在膝上，就着马车灯又过了一遍。");
+    openClues();
+    advanceTime();
+    G.busy = false; render(); return;
+  }
+
+  const prevLayer = G.revealed[act.target] != null ? G.revealed[act.target] : -1;
+  /* special 一并交给引擎：像「让他自己取下护符」这类行动，语义不在 kind/target 里 */
+  const r = Engine.resolve(world(), { kind: act.kind, target: act.target, special: act.special }, Content);
+
+  /* 记录揭示深度（决定该行动是否已被挖到底） */
+  if (r.revealLayer >= 0) G.revealed[act.target] = Math.max(prevLayer, r.revealLayer);
+
+  /* 是否带来实质进展 —— 无进展的行动不消耗时间，杜绝反复点击刷状态
+   * 注意：所有项都必须与「已有状态」做差集，否则重复执行会被误判为新进展 */
+  const progressed = (r.revealLayer > prevLayer)
+    || r.newFacts.some((f) => G.facts.indexOf(f) < 0)
+    || r.newItems.some((i) => G.items.indexOf(i) < 0)
+    || r.delta.items.some((i) => G.items.indexOf(i) < 0)
+    || Object.keys(r.delta.flags).some((k) => !G.flags[k])
+    || r.delta.process.length > 0;
+
+  /* 检定行只保留玩家需要的信息：技能 / 掷骰 / 目标 / 成败档位
+   * 达成分、方式修正、难度等内部数值属于调试信息，由 DEBUG_ROLL 控制 */
+  const v = r.tierRaw;
+  const dbg = DEBUG_ROLL
+    ? `　达成分 ${r.achScore >= 0 ? "+" : ""}${r.achScore}（方式+${r.methodBonus} 难度${r.difficulty}） → <b>${r.achievement}</b>`
+    : "";
+  log("roll", `<span class="roll-line">${r.skill}：掷出 <span class="big">${r.roll}</span> / 目标 ${r.target} → <span class="verdict ${v}">${r.tier}</span>${dbg}</span>`);
+
+  /* 旁白：一次性展示本次挖到的【全部】线索层（而非只有最深一层） */
+  let txt = Content.narrate(act.kind, act.target, r.achievement, act.special);
+  if (r.revealedClues && r.revealedClues.length) {
+    txt += "\n　　" + r.revealedClues.join("。\n　　") + "。";
+  }
+  /* 知识回响：用「应用句」说明这条知识此刻如何帮到你，而非复述原始线索 */
+  const echoes = r.factsUsed.map((f) => Content.FACTS[f].echo).filter(Boolean);
+  if (echoes.length) txt += "\n　　" + echoes.join("");
+  log("kp", txt);
+
+  /* 应用结果 */
+  const gainedFacts = r.newFacts.filter((f) => G.facts.indexOf(f) < 0);
+  const gainedItems = r.newItems.filter((i) => G.items.indexOf(i) < 0);
+  gainedFacts.forEach((f) => G.facts.push(f));
+  gainedItems.forEach((i) => G.items.push(i));
+  /* 上面旁白已经把线索正文说过了，这里只做【简短标记】，
+     否则同一句话会连着出现两遍（复读） */
+  const marks = gainedFacts.map((f) => Content.FACTS[f].label || "情报")
+    .concat(gainedItems.map((i) => Content.ITEMS[i].name));
+  if (marks.length) log("clue", "已记入：" + marks.join("、"));
+  Object.assign(G.flags, r.delta.flags);
+  /* 无论成败都会改变的状态（如「门终究被打开了」） */
+  (act.alwaysFlags || []).forEach((f) => { G.flags[f] = true; });
+  /* 仅在未达成/反效果时写入的状态（如「闹出了动静」） */
+  if (r.achievement === "未达成" || r.achievement === "反效果") {
+    (act.failFlags || []).forEach((f) => { G.flags[f] = true; });
+  }
+  if (r.delta.items.length) r.delta.items.forEach((i) => { if (G.items.indexOf(i) < 0) G.items.push(i); });
+  /* NPC 状态迁移：按 delta.npc 里出现的键逐个结算（支持多个 NPC） */
+  const NPC_CN = { charles: "查尔斯", emily: "艾米莉" };
+  Object.keys(r.delta.npc || {}).forEach((who) => {
+    const nx = r.delta.npc[who];
+    if (nx && nx !== G.npc[who]) {
+      log("sys", `${NPC_CN[who] || who}：${G.npc[who] || "——"} → ${nx}`);
+      G.npc[who] = nx;
+    }
+  });
+  if (r.delta.process.length) log("sys", "【" + r.delta.process.join("、") + "】");
+  if (r.cost.hp) { G.hp = Math.max(0, G.hp - r.cost.hp); log("sys", `你受到 ${r.cost.hp} 点伤害（HP ${G.hp}/${G.hpMax}）。`); }
+  if (r.cost.san) { G.san = Math.max(0, G.san - r.cost.san); log("sys", `理智下降 ${r.cost.san} 点（San ${G.san}）。`); }
+
+  if (progressed) enemyTurn(act, r);
+  else log("sys", "（这一次没有新的进展。）");
+
+  /* 时间自主流逝：无论有没有进展，房子都在继续醒 */
+  advanceTime();
+
+  if (G.hp <= 0) { endGame("你倒在了这座宅子里。"); }
+  else if (G.san <= 0) { endGame("理智崩坏 —— 你再也分不清墙里的声音和自己的想法。"); }
+  else checkDay7();
+
+  G.busy = false;
+  render();
+}
+
+/* ---------- 移动 ---------- */
+function moveTo(id) {
+  if (G.busy) return;
+  closeClues();            /* 同上：换房间也把笔记收起来 */
+  const from = G.sceneId;
+  const firstVisit = G.visited.indexOf(id) < 0;
+  G.sceneId = id;
+  if (firstVisit) G.visited.push(id);
+
+  const s = SCN(id);
+  log("sys", "—— " + s.name + " ——");
+  if (s.enter) log("kp", s.enter);
+  /* 场景声明的 NPC 初始状态（如第四章妹妹到场），已存在则不覆盖 */
+  if (s.npc) Object.keys(s.npc).forEach((k) => { if (!G.npc[k]) G.npc[k] = s.npc[k]; });
+
+  if (s.isFinal) {
+    /* 只有祭坛室那一个终局会惊动它；从后门离开的终局不走这一步 */
+    if (s.altar) {
+      EnemyMachine.step(G.em, "enter_altar", G.rng);
+      log("om", '<i style="color:#c0a3a3;">某个庞大的存在，终于把注意力完全转向了你。</i>');
+    }
+    ending();
+    render();
+    return;
+  }
+
+  /* 移动也是时间流逝：进屋触发「低语」，首次踏足新房间消耗时钟 */
+  const emAction = (from === "gate") ? "enter_house" : "move";
+  if (from === "gate" || firstVisit) {
+    const prevTerror = G.em.terror;
+    const out = EnemyMachine.step(G.em, emAction, G.rng);
+    maybeShowAnomaly(out, prevTerror);
+  }
+  advanceTime();   // 时间自主流逝：赶路也在消耗时间
+  checkDay7();
+  render();
+}
+
+/* ---------- 结局（由世界状态推导） ---------- */
+/* 第七日：同一个时钟走满 = 敌方计划完成。它不是第二个计数器，也不该另开一套计时。 */
+function checkDay7() {
+  if (!G || G.ended || G.em.terminal) return false;
+  const limit = EnemyMachine.DAY7_CLOCK || 215;
+  if ((G.em.totalClock || 0) < limit) return false;
+  G.ended = "结局 · 第七日：你在雨里听见钟声。等你回过头，宅子已经安静下来 —— 仪式在你面前完成了。";
+  G.outcome = "bad";
+  log("sys", "— — — — — — — — — —");
+  log("kp", '<b style="color:var(--gold);font-size:17px;">结局 · 第七日</b>\n' + G.ended.split("：").slice(1).join("："));
+  log("sys", "Demo 结束。点击「重新开始」可换一名调查员或重来一次。");
+  return true;
+}
+
+function ending() {
+  const hasAmulet = G.items.indexOf("amulet") >= 0;
+  const destroyed = !!G.flags.ritual_destroyed;
+  const lucid = G.npc.charles === "清醒";
+  /* 下面这些全部来自「知识的出口」：知道得更多，走向就多一条 */
+  const diary = G.facts.indexOf("f_diary") >= 0;
+  const relic = G.facts.indexOf("f_crest") >= 0 && G.facts.indexOf("f_cloth") >= 0;
+  const ends = G.facts.indexOf("f_ends") >= 0;
+  const prints = G.facts.indexOf("f_footprints") >= 0;
+  const interrupted = !!G.flags.ritual_interrupted;
+  let e;
+  if (destroyed && lucid && diary) e = "结局 · 黎明破晓：你与查尔斯合力毁掉了护符 —— 这一步你早就知道该怎么做，所以没有犹豫。那团黑暗发出无声的尖啸，如退潮般消散。";
+  else if (destroyed && lucid) e = "结局 · 黎明破晓：你与查尔斯合力毁掉了护符。那团黑暗发出无声的尖啸，如退潮般消散。";
+  else if (destroyed) e = ends
+    ? "结局 · 独自了结：你毁掉了护符，却没能拉住查尔斯 —— 但你早就知道，唯有毁掉才算真的了结。黑暗退去时，祭坛前只剩你一个人。"
+    : "结局 · 独自了结：你毁掉了护符，却没能拉住查尔斯。黑暗退去时，祭坛前只剩你一个人。";
+  else if (interrupted && lucid && !hasAmulet) e = "结局 · 兄妹重逢：查尔斯把护符按回祭坛，用自己封住了阵眼。艾米莉在门外喊他的名字，他没有回头。";
+  else if (hasAmulet && lucid) e = "结局 · 侥幸逃脱：查尔斯把你推向门口，自己转身面向那片黑暗。你攥着护符跌进雨里。";
+  else if (hasAmulet && relic) e = "结局 · 送回温特家：你带着护符回到温特家。艾米莉把它锁进祖辈的柜子 —— 那柜子里，还锁着别的东西。";
+  else if (hasAmulet) e = "结局 · 带走祸根：你带着护符逃出宅子。它被锁进铁盒沉入河底——可每到深夜，你总觉得它还在搏动。";
+  else if (lucid) e = "结局 · 舍身相护：查尔斯挡在你身前。你跌进雨里，身后的大门轰然合拢。";
+  else e = prints
+    ? "结局 · 逃出生天：你丢下一切逃出宅邸 —— 门廊那串只有进入、没有离开的脚印，你始终没有告诉任何人。"
+    : "结局 · 逃出生天：你丢下一切逃出宅邸。查尔斯就此人间蒸发，宅子在一场「意外」火灾中化为灰烬。";
+
+  G.ended = e;
+  G.outcome = "good";
+  log("sys", "— — — — — — — — — —");
+  log("kp", `<b style="color:var(--gold);font-size:17px;">${e.split("：")[0]}</b>\n${e.split("：").slice(1).join("：")}`);
+  log("sys", "Demo 结束。点击「重新开始」可换一名调查员或重来一次。");
+}
+function endGame(msg) { G.ended = msg; G.outcome = "death"; log("sys", "— — — — — — — — — —"); log("kp", "<b>" + msg + "</b>"); }
+
+/* ---------- 选角与启动 ---------- */
+function buildCharModal() {
+  const wrap = el("char-cards");
+  wrap.innerHTML = "";
+  Object.values(CHARACTERS).forEach((c) => {
+    const card = document.createElement("div");
+    card.className = "char-card";
+    card.innerHTML = `<h3>${c.name}</h3><div class="role">${c.job}</div>
+      <ul>${c.blurb.map((b) => "<li>· " + b + "</li>").join("")}</ul>`;
+    card.onclick = () => start(c.key);
+    wrap.appendChild(card);
+  });
+}
+
+function start(key) {
+  initGame(key);
+  el("char-modal").style.display = "none";
+  el("log").innerHTML = "";
+  closeClues();            /* 新一局从干净的笔记开始 */
+  render();
+  log("sys", `你选择了调查员 <b>${G.char.name}</b>（${G.char.job}）。`);
+  /* 开场白由角色决定：侦探从侦探所出发，医生从自己家里出发 —— 动机不同，路径不同 */
+  (G.char.open || []).forEach((line) => log("kp", line));
+  const s = SCN(G.sceneId);
+  log("sys", "—— " + s.name + " ——");
+  if (s.enter) log("kp", s.enter);
+  /* 新手引导：先把「线索」入口指出来，再让玩家做第一次检定 */
+  log("sys", "提示：右上角「线索」会记下你查到的一切 —— 它们都会变成之后判定的加成。");
+}
+
+function resetGame() {
+  G = null;
+  el("log").innerHTML = "";
+  el("action").innerHTML = "";
+  closeClues();
+  renderClues();           /* G 已清空 → 角标归零 */
+  el("char-body").innerHTML = '<div class="empty-hint">请先选择一名调查员开始。</div>';
+  el("title-screen").style.display = "none";
+  el("char-modal").style.display = "flex";
+}
+
+function renderChangelog() {
+  el("changelog-body").innerHTML = CHANGELOG.map((c) => `
+    <h3>v${c.version} · ${c.title}</h3><div class="vmeta">${c.date}</div>
+    <ul>${c.highlights.map((h) => `<li>${h}</li>`).join("")}</ul>
+    ${c.fixes && c.fixes.length ? `<ul>${c.fixes.map((f) => `<li class="fix">${f}</li>`).join("")}</ul>` : ""}`).join("");
+}
+
+/* 弹窗显隐：统一走这里，避免各处内联样式写法不一致 */
+function show(id) { var e = el(id); if (e) { e.style.display = "flex"; e.style.visibility = "visible"; } }
+function hide(id) { var e = el(id); if (e) e.style.display = "none"; }
+
+function bootSequence() {
+  window.__dshBooted = true;
+  if (window.__bootCheck) window.__bootCheck("已就绪 · 构建 1126062637");
+  /* ① 最先绑定关键按钮 —— 即使后面任何渲染出错，主流程也不会卡死。
+        （旧内核上「点了开始游戏没反应」的典型原因就是绑定排在渲染之后） */
+  el("start-btn").onclick = function () { hide("title-screen"); show("howto-modal"); };
+  el("howto-ok").onclick = function () { hide("howto-modal"); show("char-modal"); };
+  /* 「重新开始」是破坏性操作，而且就贴在行动列表下方 ——
+     移动端一次误触就把整局清空。改成「再点一次确认」，不弹窗。 */
+  var resetArmed = 0, resetTimer = null;
+  el("reset-btn").onclick = function () {
+    var btn = el("reset-btn");
+    if (!resetArmed) {
+      resetArmed = 1;
+      btn.textContent = "再点一次，确认重新开始";
+      btn.classList.add("armed");
+      resetTimer = setTimeout(function () {
+        resetArmed = 0; btn.textContent = "重新开始"; btn.classList.remove("armed");
+      }, 3000);
+      return;
+    }
+    if (resetTimer) clearTimeout(resetTimer);
+    resetArmed = 0;
+    btn.textContent = "重新开始";
+    btn.classList.remove("armed");
+    resetGame();
+  };
+
+  /* 竖屏唯一形态，所以抽屉在全宽度可用（原先只在 ≤820px 才允许展开，
+     桌面宽窗口下点了没反应） */
+  el("char-head").onclick = function () {
+    try {
+      var p = el("panel-char");
+      p.classList.toggle("open");
+      el("char-toggle").textContent = p.classList.contains("open") ? "收起 ▴" : "详情 ▾";
+    } catch (e) {}
+  };
+
+  /* 右上角「线索」：点开调查笔记（已知情报 + 持有物），点面板外任意处收起 */
+  el("clue-btn").onclick = function (ev) {
+    if (ev && ev.stopPropagation) ev.stopPropagation();
+    toggleClues();
+  };
+  el("clue-close").onclick = function (ev) {
+    if (ev && ev.stopPropagation) ev.stopPropagation();
+    closeClues();
+  };
+  document.addEventListener("pointerdown", function (ev) {
+    var p = el("clue-panel");
+    if (!p || p.style.display !== "block") return;
+    var t = ev.target;
+    if (t && t.closest && (t.closest("#clue-btn") || t.closest("#clue-panel"))) return;
+    closeClues();
+  }, true);
+  try { renderClues(); } catch (e) {}
+  try { bindTipToggles(); } catch (e) {}
+
+  var openLog = function () { show("changelog-modal"); };
+  el("version-btn-title").onclick = openLog;
+  el("version-btn-footer").onclick = openLog;
+  el("changelog-close").onclick = function () { hide("changelog-modal"); };
+
+  /* ② 初始界面：只显示标题界面 */
+  hide("howto-modal"); hide("char-modal"); hide("changelog-modal");
+  show("title-screen");
+
+  /* ③ 渲染型初始化放最后，各自隔离，任何一个失败都不影响其余功能 */
+  try { buildCharModal(); }
+  catch (e) { el("char-cards").innerHTML = "<div class='empty-hint'>角色卡加载失败：" + e.message + "</div>"; }
+  try { renderChangelog(); }
+  catch (e) { el("changelog-body").innerHTML = "<div class='empty-hint'>版本公告加载失败</div>"; }
+}
+
+/* 兼容极旧内核：若 DOMContentLoaded 已经错过，直接执行 */
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bootSequence);
+else bootSequence();
+
+
+/* ==================== ⑤ DSH Game Studio 桥接层（新增） ====================
+ * 这是一个「纯选项」游戏：没有方向键、没有主角坐标，所以按 studio 的约定
+ * 提供 __autoplay(state)，让无头试玩能通过游戏自己的函数推进真实流程。
+ * ========================================================================= */
+(function studioBridge() {
+  "use strict";
+
+  var R = (window.GAME && window.GAME.rules) || {};
+  var STEP_MS = typeof R.autoplayStepMs === "number" ? R.autoplayStepMs : 220;
+
+  /* ---- fps：studio 的试玩报告要读 ---- */
+  var frames = 0, fps = 0, fpsAt = Date.now();
+  (function loop() {
+    frames++;
+    var now = Date.now();
+    if (now - fpsAt >= 1000) { fps = Math.round(frames * 1000 / (now - fpsAt)); frames = 0; fpsAt = now; }
+    requestAnimationFrame(loop);
+  })();
+
+  function shown(id) {
+    var e = document.getElementById(id);
+    return !!e && e.style.display !== "none";
+  }
+  function tap(id) {
+    var e = document.getElementById(id);
+    if (e) { e.click(); return true; }
+    return false;
+  }
+
+  /* ---- 开局：tap 与 Enter 都必须能真的开始 ----
+   * studio 的试玩只用「一次点屏 + 一次 Enter」开局，之后就一直调 __autoplay；
+   * 而本作的开场是标题 → 说明 → 选角三步，所以：
+   *   · 触摸：点标题页/说明页任意处 = 下一步（角色卡仍由卡片自己处理，避免误选）
+   *   · 键盘：Enter / 空格 = 快速开始（跳过说明与选角，用第一名调查员）
+   * 两者对真人玩家都是可用路径，不是测试开关。 */
+  function introModal() {
+    if (shown("title-screen")) return "title-screen";
+    if (shown("howto-modal")) return "howto-modal";
+    if (shown("char-modal")) return "char-modal";
+    return null;
+  }
+  function advance(id) {
+    if (id === "title-screen") { hide("title-screen"); show("howto-modal"); return true; }
+    if (id === "howto-modal") { hide("howto-modal"); show("char-modal"); return true; }
+    return false;
+  }
+  function quickStart() {
+    var keys = Object.keys(CHARACTERS || {});
+    if (!keys.length) return false;
+    start(keys[0]);
+    hide("title-screen"); hide("howto-modal"); hide("char-modal");
+    return true;
+  }
+  document.addEventListener("pointerdown", function (ev) {
+    var id = introModal();
+    if (!id) return;
+    var t = ev.target;
+    if (id === "char-modal" && t && t.closest && t.closest(".char-card")) return;
+    advance(id);
+  }, true);
+  window.addEventListener("keydown", function (ev) {
+    if (ev.key !== "Enter" && ev.key !== " " && ev.key !== "Spacebar") return;
+    if (!introModal()) return;
+    if (ev.preventDefault) ev.preventDefault();
+    quickStart();
+  }, true);
+
+  /* 把快捷键写在标题页上，别做隐藏操作 */
+  try {
+    var ti = document.querySelector("#title-screen .title-inner");
+    if (ti && !document.getElementById("wugu-keyhint")) {
+      var hint = document.createElement("div");
+      hint.id = "wugu-keyhint";
+      hint.className = "title-en";
+      hint.style.marginTop = "12px";
+      hint.textContent = "回车 / 空格：快速开始（跳过说明与选角）";
+      ti.appendChild(hint);
+    }
+  } catch (e) {}
+
+  /* ---- 状态快照：studio 约定的字段 + 本作自己的诊断字段 ---- */
+  window.__gameState = function () {
+    var g = (typeof G !== "undefined" && G) ? G : null;
+    var onTitle = shown("title-screen") || shown("howto-modal") || shown("char-modal");
+    var phase = "title";
+    if (g && !onTitle) {
+      if (g.ended) {
+        /* 游戏自己在 G.outcome 里标了性质：good=走到某个结局 / bad=第七日 / death=HP·SAN 归零 */
+        if (g.outcome === "good") phase = "won";
+        else if (g.outcome) phase = "lost";
+        else phase = String(g.ended).indexOf("结局") === 0 ? "won" : "lost";
+      } else phase = "playing";
+    }
+    return {
+      phase: phase,
+      score: g ? g.facts.length * 10 + g.items.length * 5 + g.visited.length : 0,
+      hearts: g ? g.hp : 0,
+      fps: fps,
+      hero: { x: 0, y: 0 },
+      pickups: [],
+      enemies: [],
+      world: { w: window.innerWidth, h: window.innerHeight },
+      /* 额外诊断（studio 只强制上面的字段） */
+      san: g ? g.san : 0,
+      terror: g ? g.em.terror : 0,
+      scene: g ? g.sceneId : "",
+      clues: g ? g.facts.length : 0,
+      items: g ? g.items.length : 0,
+      visited: g ? g.visited.length : 0,
+      ended: g ? (g.ended || null) : null,
+    };
+  };
+
+  /* ---- 自动驾驶：一步一个真实动作 ----
+   * 标题 → 说明 → 选角（随机一名，覆盖不同角色）
+   * 游戏中：优先做「调查/交涉/取物」类行动（吃到内容），
+   *         本场景行动挖完后，走去过次数最少的出口（避免 A↔B 打转）。 */
+  var lastStep = 0, visits = {}, stuck = 0;
+
+  window.__autoplay = function () {
+    var now = Date.now();
+    if (now - lastStep < STEP_MS) return;
+    lastStep = now;
+
+    if (shown("title-screen")) { tap("start-btn"); return; }
+    if (shown("howto-modal")) { tap("howto-ok"); return; }
+    if (shown("char-modal")) {
+      var cards = document.querySelectorAll("#char-cards .char-card");
+      if (cards.length) { cards[Math.floor(Math.random() * cards.length)].click(); return; }
+    }
+
+    if (typeof G === "undefined" || !G) return;
+    if (G.ended) return;
+
+    var acts = availableActs();
+    if (acts.length) { stuck = 0; doAct(acts[0]); return; }
+
+    var exits = availableExits();
+    if (exits.length) {
+      stuck = 0;
+      var best = exits[0], bestN = Infinity;
+      for (var i = 0; i < exits.length; i++) {
+        var n = visits[exits[i].to] || 0;
+        if (n < bestN) { bestN = n; best = exits[i]; }
+      }
+      visits[best.to] = (visits[best.to] || 0) + 1;
+      moveTo(best.to);
+      return;
+    }
+
+    /* 死路：连撞三次就重开一局换个人继续跑，别让无头试玩空转 */
+    if (++stuck >= 3) { stuck = 0; visits = {}; resetGame(); }
+  };
+})();
+</script>
+</body></html>
